@@ -1,33 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Boton from './componentes/Boton.tsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+const iniciarSesion = () => {
+  
+} 
+
+const registrar = () => {
+
+}
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='contenedor-app'>
+        <div className='contenedor-header'>
+            <div className='logo-navbar'>
+              <img className='header-logo'
+              src= '../src/imagenes/logoPaginaPNG.png'
+              alt= 'logo pagina'/>
+            </div>
+            <div className='contenedor-navbar-links'>
+              <ul className='navbar-links'>
+                <li><a href="#">PERFIL</a></li>
+                <li><a href="#">TORNEOS</a></li>
+                <li><a href="#">JUEGOS</a></li>
+                <li><a href="#">EQUIPOS</a></li>
+                <li><a href="#">FAQS</a></li>
+              </ul>
+              <Boton
+              texto='Iniciar'
+              esBotonDeInicio = {true}
+              manejarBoton = {iniciarSesion}/>
+              <Boton
+              texto='Registrar'
+              esBotonDeInicio = {false}
+              manejarBoton = {registrar}/>
+            </div>
+            
+        </div>
+        <div className='contenedor-body'>
+          <img className='body-logo'
+              src= '../src/imagenes/logoPaginaPNG.png'
+              alt= 'logo pagina'/>
+          <h2>JUEGA, COMPITE, Y GANA</h2>
+          <h5>ClutchUp es la plataforma online definitiva para competir  en torneos online y llevar tu nivel al maximo.
+            <br/>Si estas listo para competir, <span className="texto-resaltado">ESTE ES TU LUGAR...</span></h5>
+          <Boton
+            texto='Unete Ahora'
+            esBotonDeInicio = {false}
+            manejarBoton = {registrar}
+            claseExtra="boton-unete"/>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+  
     </>
   )
 }

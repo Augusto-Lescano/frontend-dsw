@@ -1,42 +1,103 @@
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%; 
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html, 
+body {
+  background-color: #1e1e1e;
+  height: 100%;
+  width: 100%;    
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contenedor-app{
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.contenedor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px; 
+  padding: 0 20px;
+  width: 100%; 
+  padding: 0px 20px;
+  background-color: #1e1e1e;
+  margin-bottom: 0px;
 }
 
-.card {
-  padding: 2em;
+.header-logo {
+  height: 50px; 
+  width: auto;  
 }
 
-.read-the-docs {
-  color: #888;
+.contenedor-navbar-links{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.navbar-links{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+}
+
+.navbar-links li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+
+.contenedor-body{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;  
+  width: 100%;
+  height: calc(100vh - 80px);    
+  padding: 0 20px;
+  gap: 20px;        
+  box-sizing: border-box;
+}
+
+
+.body-logo {
+  width: 30%; 
+  max-width: 300px; 
+  height: auto; 
+}
+
+h2{
+  color:#CA4D25;
+  font-size: 90px;
+}
+
+h5{
+  color: #2E644B;
+  font-size: 20px;
+}
+
+.texto-resaltado{
+  color: #89211c;
+  font-weight: bold;
 }

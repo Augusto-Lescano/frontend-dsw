@@ -1,5 +1,6 @@
 import './App.css'
 import Boton from './componentes/Boton.tsx'
+import { Link } from 'react-router-dom';
 
 function App() {
 
@@ -23,7 +24,7 @@ const registrar = () => {
             <div className='contenedor-navbar-links'>
               <ul className='navbar-links'>
                 <li><a href="#">PERFIL</a></li>
-                <li><a href="#">TORNEOS</a></li>
+                <li><Link to="/torneos">TORNEOS</Link></li>
                 <li><a href="#">JUEGOS</a></li>
                 <li><a href="#">EQUIPOS</a></li>
                 <li><a href="#">FAQS</a></li>

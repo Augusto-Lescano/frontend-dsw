@@ -50,3 +50,15 @@ export async function inscribirEnTorneo(torneoId: number, usuarioId: number, equ
     const data = await res.json();
     return data.data;
 }
+
+export async function actualizarTorneo (torneoId: number, torneo: any){
+    const res = await fetch(`/api/torneos/${torneoId}`,{
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify(torneo)
+    });
+
+    if (!res.ok) throw new Error("Error al actualizar el torneo");
+    const data = await res.json();
+    return data.data
+}

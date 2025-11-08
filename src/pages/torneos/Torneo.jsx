@@ -45,8 +45,8 @@ function Torneos() {
     navigate('/torneos/crear')
   }
 
-  const hanldeActualizarTorneo = () =>{
-    navigate('/torneos/crear')
+  const hanldeActualizarTorneo = torneoId =>{
+    navigate(`/torneos/actualizar/${torneoId}`)
   }
 
   const hanldeEliminarTorneo = () =>{
@@ -77,6 +77,8 @@ function Torneos() {
                           disabled={inscripcionLoading === t.id}>
                             {inscripcionLoading === t.id ? 'Inscribiendo...' : 'Inscribirse'}
                         </button>
+                        <button className='btnCrud'
+                          onClick={hanldeActualizarTorneo(t.id)}>Actualizar</button>
                     </div>
                 ))
             ):(
@@ -86,6 +88,7 @@ function Torneos() {
         <div className='contenedor-botones'>
           <button className='btnCrud'
           onClick={hanldeCrearTorneo}>Agregar</button>
+          
         </div>
     </div>
 

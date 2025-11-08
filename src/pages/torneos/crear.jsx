@@ -227,12 +227,12 @@ function CrearTorneo(){
           <label>Tipo de Torneo:</label>
           <select
             name="tipoTorneoId"
-            value={formData.tipoTorneo}
+            value={formData.tipoDeTorneo}
             onChange={handleEntrada}
             required
           >
             <option value="">Seleccione un tipo de torneo</option>
-            {juegos.map(tipoTorneo => (
+            {tipoTorneos.map(tipoTorneo => (
               <option key={tipoTorneo.id} value={tipoTorneo.id}>{tipoTorneo.nombre}</option>
             ))}
           </select>

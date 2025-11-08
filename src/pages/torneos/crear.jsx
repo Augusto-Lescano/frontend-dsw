@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { crearTorneo } from '../../apis/torneoApi.ts';
 import './crear.css';
+import { useEffect } from 'react';
+import { obtenerJuegos } from '../../apis/juegoApi.ts';
+import { obtenerPlataformas } from '../../apis/plataformaApi.ts';
+import { obtenerTipoTorneos } from '../../apis/tipoTorneoApi.ts';
 
 function CrearTorneo(){
 
@@ -28,6 +32,9 @@ function CrearTorneo(){
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const [juegos, setJuegos] = useState([]);
+    const [plataformas, setPlataformas] = useState([]);
+    const [tipoTorneos, settipoTorneos] = useState([]);
 
     const handleEntrada = (e) => {
     const { name, value } = e.target;
@@ -40,6 +47,24 @@ function CrearTorneo(){
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    useEffect(()=>{
+      const fetchData = async () => {
+        try{
+          const [juegosData,plataformasData, tipoTorneosData] = await Promise.all([
+            obtenerJuegos(),
+            obtenerPlataformas(),
+            obtenerTipoTorneos()
+          ]);
+          setJuegos(juegosData)
+          setPlataformas(plataformasData)
+          settipoTorneos(tipoTorneosData)
+        }catch (err){
+          setError("Error cargando datos: " + err.message);
+        }
+      };
+      fetchData();
+    },[]);
 
 
     try {
@@ -199,25 +224,33 @@ function CrearTorneo(){
         </div>
 
         <div className="form-group">
-          <label>ID del Tipo de Torneo:</label>
-          <input
-            type="number"
-            name="tipoDeTorneoId"
-            value={formData.tipoDeTorneoId}
+          <label>Tipo de Torneo:</label>
+          <select
+            name="tipoTorneoId"
+            value={formData.tipoTorneo}
             onChange={handleEntrada}
             required
-          />
+          >
+            <option value="">Seleccione un tipo de torneo</option>
+            {juegos.map(tipoTorneo => (
+              <option key={tipoTorneo.id} value={tipoTorneo.id}>{tipoTorneo.nombre}</option>
+            ))}
+          </select>
         </div>
 
         <div className="form-group">
-          <label>ID del Juego:</label>
-          <input
-            type="number"
-            name="juego"
+          <label>Juego:</label>
+          <select
+            name="juegoId"
             value={formData.juego}
             onChange={handleEntrada}
             required
-          />
+          >
+            <option value="">Seleccione un juego</option>
+            {juegos.map(juego => (
+              <option key={juego.id} value={juego.id}>{juego.nombre}</option>
+            ))}
+          </select>
         </div>
 
         <div className="form-group">
@@ -232,14 +265,18 @@ function CrearTorneo(){
         </div>
 
         <div className="form-group">
-          <label>ID de la Plataforma:</label>
-          <input
-            type="number"
-            name="plataforma"
+          <label>Plataforma:</label>
+          <select
+            name="plataformaId"
             value={formData.plataforma}
             onChange={handleEntrada}
             required
-          />
+          >
+            <option value="">Seleccione una plataforma</option>
+            {plataformas.map(plataforma => (
+              <option key={plataforma.id} value={plataforma.id}>{plataforma.nombre}</option>
+            ))}
+          </select>
         </div>
 
         <div className="form-actions">

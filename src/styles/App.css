@@ -43,6 +43,11 @@ body {
   width: auto;  
 }
 
+.header-logo:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
 .contenedor-navbar-links{
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { obtenerTorneos, inscribirEnTorneo } from '../../apis/torneoApi.ts';
-import './Torneo.css'
+import { obtenerTorneos, inscribirEnTorneo } from '../../services/torneoApi.ts';
+import '../torneos/Torneo.css';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -45,13 +45,13 @@ function Torneos() {
     navigate('/torneos/crear')
   }
 
-  const hanldeActualizarTorneo = () =>{
+  /*const hanldeActualizarTorneo = () =>{
     navigate('/torneos/crear')
   }
 
   const hanldeEliminarTorneo = () =>{
     navigate('/torneos/crear')
-  }
+  }*/
 
   return (
 

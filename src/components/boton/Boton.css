@@ -1,0 +1,36 @@
+.boton-iniciar {
+  background-color: #2E644B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.boton-iniciar:hover {
+  background-color: #25503d;
+}
+
+.boton-registrar {
+  background-color: #CA4D25;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.boton-registrar:hover {
+  background-color: #b13e1c;
+}
+
+.boton-unete {
+  margin-top: 25px;
+  font-size: 1.1rem;
+  padding: 14px 40px;
+  background-color: #2E644B;
+}

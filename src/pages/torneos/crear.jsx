@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { crearTorneo } from '../../apis/torneoApi.ts';
+import { crearTorneo } from '../../services/torneoApi.ts';
 import './crear.css';
 
 function CrearTorneo(){

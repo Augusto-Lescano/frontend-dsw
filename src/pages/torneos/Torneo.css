@@ -1,8 +1,16 @@
-.contenedor-torneos{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
+.contenedor-torneos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+
+  /* Centrado vertical */
+  min-height: calc(100vh - 80px); /* altura de pantalla menos navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente */
+  align-items: center;     /* centra horizontalmente */
+  gap: 20px;               /* espacio entre elementos internos */
 }
 
 .contenedor-torneos h1 {
@@ -25,7 +33,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .tarjeta-torneo {
@@ -35,7 +43,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
 .tarjeta-torneo h3 {
@@ -45,7 +52,6 @@
   border-bottom: 2px solid #2E644B;
   padding-bottom: 8px;
 }
-
 
 .tarjeta-torneo p {
   margin: 8px 0;
@@ -67,8 +73,8 @@
   margin-top: 15px;
 }
 
-.btnCrud{
-   width: 100%;
+.btnCrud {
+  width: 100%;
   padding: 12px 20px;
   background: #CA4D25;
   color: white;
@@ -79,4 +85,15 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 15px;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+  .contenedor-torneos {
+    padding-top: 150px;
+  }
+
+  .tarjeta-torneo {
+    padding: 15px;
+  }
 }

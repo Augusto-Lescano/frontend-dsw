@@ -1,0 +1,41 @@
+.user-home {
+  color: #e0e0e0;
+  text-align: center;
+  padding: 60px 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.user-home h1 {
+  color: #ca4d25;
+  font-size: 60px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.user-home p {
+  color: #2e644b;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .user-home h1 {
+    font-size: 40px;
+  }
+  .user-home p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-home h1 {
+    font-size: 32px;
+  }
+  .user-home p {
+    font-size: 16px;
+  }
+}

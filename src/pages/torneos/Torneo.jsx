@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { obtenerTorneos, inscribirEnTorneo } from '../../apis/torneoApi.ts';
-import './Torneo.css'
+import { obtenerTorneos, inscribirEnTorneo } from '../../services/torneoService.js';
+import './Torneo.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/useAuth.js';
 
 
 function Torneos() {
@@ -9,6 +10,7 @@ function Torneos() {
   const [error, setError] = useState("");
   const [inscripcionLoading, setInscripcionLoading] = useState(null);
   const navigate = useNavigate();
+  const { usuario } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,9 +29,8 @@ function Torneos() {
     setError("");
 
     try{
-      // aca hay que modificar cuando este la api de usuarios para obtenerlo
-      const usuarioId = null;
-      const equipoId = null
+      const usuarioId = usuario?.data.id ?? null;
+      const equipoId = null;
 
       await inscribirEnTorneo(torneoId,usuarioId,equipoId);
 
@@ -41,17 +42,17 @@ function Torneos() {
     }
   };
 
-  const hanldeCrearTorneo = () =>{
+  const handleCrearTorneo = () =>{
     navigate('/torneos/crear')
   }
 
-  const hanldeActualizarTorneo = torneoId =>{
+  const handleActualizarTorneo = torneoId =>{
     navigate(`/torneos/actualizar/${torneoId}`)
   }
 
-  const hanldeEliminarTorneo = () =>{
+  /*const hanldeEliminarTorneo = () =>{
     navigate('/torneos/crear')
-  }
+  }*/
 
   return (
 
@@ -78,22 +79,21 @@ function Torneos() {
                             {inscripcionLoading === t.id ? 'Inscribiendo...' : 'Inscribirse'}
                         </button>
                         <button className='btnCrud'
-                          onClick={hanldeActualizarTorneo(t.id)}>Actualizar</button>
+                          onClick={handleActualizarTorneo(t.id)}>Actualizar</button>
                     </div>
                 ))
             ):(
                 <p>No hay torneos disponibles</p>
             )}
         </div>
-        <div className='contenedor-botones'>
-          <button className='btnCrud'
-          onClick={hanldeCrearTorneo}>Agregar</button>
-          
-        </div>
+        {/* Botón solo para admins */}
+        {usuario?.rol === 'admin' && (
+          <div className='contenedor-botones'>
+            <button className='btnCrud' onClick={handleCrearTorneo}>Agregar</button>
+          </div>
+        )}
     </div>
-
   );
-
 }
 
 export default Torneos;

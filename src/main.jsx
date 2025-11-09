@@ -11,6 +11,7 @@ import Register from './pages/register/registerForm.jsx';
 import Torneos from './pages/torneos/Torneo.jsx';
 import CrearTorneo from './pages/torneos/crear.jsx';
 import './styles/main.css';
+//import ActualizarTorneo from './pages/torneos/actualizar.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

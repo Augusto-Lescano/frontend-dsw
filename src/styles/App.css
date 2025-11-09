@@ -106,3 +106,71 @@ h5{
   color: #89211c;
   font-weight: bold;
 }
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* === Tablets y pantallas medianas (hasta 768px) === */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 60px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  .body-logo {
+    width: 40%;
+    max-width: 220px;
+  }
+
+  .navbar-links li a {
+    font-size: 14px;
+  }
+}
+
+/* === Celulares grandes (iPhone 11/12/13, Samsung S20, etc. hasta 480px) === */
+@media (max-width: 480px) {
+  .contenedor-header {
+    padding: 10px;
+  }
+
+  .navbar-links {
+    display: none; /* Oculta el menú si no entra */
+  }
+
+  h2 {
+    font-size: 38px;
+  }
+
+  h5 {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .body-logo {
+    width: 50%;
+    max-width: 150px;
+  }
+}
+
+/* === Celulares pequeños (iPhone SE, Mini, hasta 375px) === */
+@media (max-width: 375px) {
+  h2 {
+    font-size: 28px;
+  }
+
+  h5 {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .body-logo {
+    width: 60%;
+    max-width: 120px;
+  }
+
+  .contenedor-body {
+    padding: 0 10px;
+  }
+}

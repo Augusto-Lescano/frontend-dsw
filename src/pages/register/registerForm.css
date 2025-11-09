@@ -13,7 +13,7 @@
   width: 100%;
   max-width: 380px;
   background: #fff;
-  padding: 40px 30px;
+  padding: 23px 25px;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   display: flex;
@@ -131,5 +131,117 @@
   font-weight: 700;
   font-size: 1.8rem;
   text-align: center;
+}
+
+/* ==================== RESPONSIVE (celulares y tablets) ==================== */
+
+/* === Tablets (iPad, Galaxy Tab, etc. 768px - 1024px) === */
+@media (max-width: 1024px) {
+  .form-login {
+    max-width: 500px;
+    padding: 40px 30px;
+  }
+
+  .form-login h2 {
+    font-size: 1.6rem;
+  }
+
+  .campo input,
+  .campo select {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+
+  .form-login button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .logo-form {
+    width: 90px;
+    margin-bottom: 15px;
+  }
+
+  .logo-izquierda {
+    width: 100px;
+    top: 20px;
+    left: 25px;
+  }
+}
+
+/* === Celulares grandes (iPhone 12, 13, Samsung S2?, etc.) === */
+@media (max-width: 480px) {
+  .form-login {
+    max-width: 90%;
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .form-login h2 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  .campo label {
+    font-size: 0.85rem;
+  }
+
+  .campo input,
+  .campo select {
+    padding: 9px 10px;
+    font-size: 0.9rem;
+  }
+
+  .form-login button {
+    font-size: 0.9rem;
+    padding: 9px;
+  }
+
+  .logo-izquierda {
+    display: none; /* Ocultamos el logo de la esquina */
+  }
+
+  .logo-form {
+    width: 70px;
+    margin-bottom: 12px;
+    display: block;
+  }
+}
+
+/* === Celulares chiquitos (iPhone SE 2, iPhone 13 mini, etc.) === */
+@media (max-width: 375px) {
+  .form-login {
+    max-width: 300px;
+    padding: 18px 15px;
+  }
+
+  .form-login h2 {
+    font-size: 1.2rem;
+  }
+
+  .campo label {
+    font-size: 0.8rem;
+  }
+
+  .campo input,
+  .campo select {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .form-login button {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .logo-form {
+    width: 60px;
+    margin-bottom: 10px;
+  }
+
+  .logo-izquierda {
+    display: none; /* lo ocultamos completamente en celulares */
+  }
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { registerReq } from '../../services/authService.js';
 import './registerForm.css';
 
 const Register = () => {
@@ -34,7 +35,7 @@ const Register = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
     setExito('');
@@ -83,9 +84,25 @@ const Register = () => {
       return;
     }
 
-    // ✅ Si pasa todas las validaciones:
+    // Si pasa todas las validaciones:
+    try {
+    // Payload para el backend
+    const payload = {
+      nombre,
+      apellido,
+      pais,
+      nombreUsuario: usuario,
+      email,
+      contrasenia: password
+    };
+
+    await registerReq(payload);
+
     setExito('Registro exitoso ✅');
     setTimeout(() => navigate('/login'), 1500);
+  } catch (err) {
+    setError(err.message || 'Error al registrar usuario');
+  }
   };
 
   return (

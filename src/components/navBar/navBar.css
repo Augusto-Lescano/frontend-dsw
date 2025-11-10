@@ -1,0 +1,105 @@
+/* ===== navbar.css ===== */
+
+.contenedor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 20px;
+  width: 100%;
+  background-color: #1e1e1e;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #2E644B;
+}
+
+.logo-navbar {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.header-logo:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+/* Contenedor de los links */
+.contenedor-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-links li a:hover {
+  color: #CA4D25;
+}
+
+/* === Botones de login / registro === */
+.contenedor-navbar-links button {
+  background: #2E644B;          /* verde oscuro, combina con el ícono */
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.contenedor-navbar-links button:hover {
+  background: #25553f;          /* tono más oscuro al pasar el mouse */
+  transform: translateY(-2px);
+}
+
+/* === Si querés dejar uno de los botones (por ejemplo "Registrarse") diferente === */
+.contenedor-navbar-links .btn-secundario {
+  background: #CA4D25;          /* color acento */
+}
+
+.contenedor-navbar-links .btn-secundario:hover {
+  background: #b34421;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .navbar-links li a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-links {
+    display: none; /* Oculta menú en móviles pequeños */
+  }
+
+  .contenedor-header {
+    padding: 10px;
+  }
+}

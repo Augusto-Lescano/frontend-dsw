@@ -1,30 +1,38 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../context/useAuth.js';
 import { useNavigate } from 'react-router-dom';
+import { logoutReq } from '../../services/authService.js';
 import './IconoUsuario.css';
 
-function IconoUsuario() {
-  const { logout, usuario } = useAuth();
+export default function IconoUsuario() {
+  const { setUsuario, usuario } = useAuth();
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const menuRef = useRef();
+  const [menuAbierto, setMenuAbierto] = useState(false);
+  const menuRef = useRef(null);
 
-  const handleActualizar = () => {
-    setOpen(false);
-    navigate('/perfil'); // tu ruta de editar perfil
+  const handlePerfil = () => {
+    setMenuAbierto(false);
+    navigate('/perfil');
   };
 
+  // Cerrar sesión
   const handleLogout = async () => {
-    await logout();
-    setOpen(false);
-    navigate('/login');
+    try {
+      await logoutReq(); // Llama a la función del contexto o servicio
+      setUsuario(null);
+      navigate('/login');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    } finally {
+      setMenuAbierto(false);
+    }
   };
 
-  // Cerrar menú si clic fuera del contenedor
+  // Cierra el menú si se hace clic fuera
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
-        setOpen(false);
+        setMenuAbierto(false);
       }
     };
     document.addEventListener('click', handleClickOutside);
@@ -35,20 +43,18 @@ function IconoUsuario() {
     <div className="user-menu-container" ref={menuRef}>
       <div
         className="user-icon"
-        onClick={() => setOpen(!open)}
+        onClick={() => setMenuAbierto((prev) => !prev)}
         title={usuario ? usuario.nombre : 'Mi cuenta'}
       >
         👤
       </div>
 
-      {open && (
-        <div className="user-dropdown">
-          <button onClick={handleActualizar}>Actualizar perfil</button>
-          <button onClick={handleLogout}>Cerrar sesión</button>
-        </div>
-      )}
+      {/* Menú desplegable animado */}
+      <div className={`user-dropdown ${menuAbierto ? 'active' : ''}`}>
+        <button onClick={handlePerfil}>Actualizar perfil</button>
+        <hr />
+        <button onClick={handleLogout}>Cerrar sesión</button>
+      </div>
     </div>
   );
 }
-
-export default IconoUsuario;

@@ -1,23 +1,50 @@
 import axios from "axios";
 
-const tiposTorneoUrl = "http://localhost:3000/api/tipoDeTorneo";
+// ⭐ Crear instancia de axios con configuración común
+const api = axios.create({
+  baseURL: 'http://localhost:3000/api/tipoDeTorneo',
+  withCredentials: true, // ⭐ Importante para las cookies HTTP-only
+});
 
 export async function obtenerTipoTorneos() {
-  const res = await axios.get(tiposTorneoUrl);
-  return res.data.data;
+  try {
+    const res = await api.get('/');
+    console.log('✅ Respuesta tipos torneo:', res.data); // Para debug
+    return res.data.data;
+  } catch (error) {
+    console.error('❌ Error obteniendo tipos de torneo:', error);
+    throw error; // Propagar el error para manejarlo en el componente
+  }
 }
 
 export async function obtenerUnTipoTorneo(id) {
-  const res = await axios.get(`${tiposTorneoUrl}/${id}`);
-  return res.data.data;
+  try {
+    const res = await api.get(`/${id}`);
+    return res.data.data;
+  } catch (error) {
+    console.error(`❌ Error obteniendo tipo torneo ${id}:`, error);
+    throw error;
+  }
 }
 
 export async function crearTipoTorneo(tipoTorneo) {
-  const res = await axios.post(tiposTorneoUrl, tipoTorneo);
-  return res.data.data;
+  try {
+    const res = await api.post('/', tipoTorneo, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return res.data.data;
+  } catch (error) {
+    console.error('❌ Error creando tipo torneo:', error);
+    throw error;
+  }
 }
 
 export async function eliminarTipoTorneo(id) {
-  await axios.delete(`${tiposTorneoUrl}/${id}`);
-  return true;
+  try {
+    await api.delete(`/${id}`);
+    return true;
+  } catch (error) {
+    console.error(`❌ Error eliminando tipo torneo ${id}:`, error);
+    throw error;
+  }
 }

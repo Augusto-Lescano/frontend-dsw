@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: 'http://localhost:3000/api/torneos',
-  withCredentials: true, // importante si necesitas cookies httpOnly
+  withCredentials: true, // importante para las cookies httpOnly
 });
 
 // Obtener todos los torneos

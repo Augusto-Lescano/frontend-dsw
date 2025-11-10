@@ -58,12 +58,14 @@ export const registerReq = async (payload) => {
 
 export const logoutReq = async () => {
   try {
-    const res = await api.post('/usuarios/logout');
+    const res = await api.post('/usuarios/logout', {}, { withCredentials: true });
     return res.data;
   } catch (err) {
+    console.error('Error logout:', err);
     throw new Error(err.message || 'Error al cerrar sesión');
   }
 };
+
 
 export const meReq = async () => {
   try {

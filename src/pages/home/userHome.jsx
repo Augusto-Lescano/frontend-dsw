@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../context/useAuth.js';
-import './userHome.css';
+import '../../styles/main.css';
 
 export default function UserHome() {
   const { usuario } = useAuth();

@@ -3,6 +3,7 @@ import Boton from '../boton/Boton';
 import IconoUsuario from '../usuarioIcono/iconoUsuario.jsx';
 import { useAuth } from '../../context/useAuth.js';
 import logo from '../../assets/images/logoPaginaPNG.png';
+import './navBar.css';
 
 export default function Navbar() {
   const { usuario } = useAuth();

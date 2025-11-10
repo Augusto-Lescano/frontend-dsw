@@ -24,11 +24,25 @@
 }
 
 .lista-torneos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;       /* permite que bajen de línea */
   gap: 20px;
-  align-items: stretch; /* ⭐ IMPORTANTE */
-  justify-content: center;
+  justify-content: flex-start; /* alineación natural al inicio */
+  align-items: stretch;  /* todas las tarjetas de igual altura si es posible */
+  width: 100%;
+}
+
+.lista-torneos::-webkit-scrollbar {
+  height: 10px;
+}
+
+.lista-torneos::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.lista-torneos::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 
 .tarjeta-torneo {
@@ -38,13 +52,14 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
   transition: all 0.3s ease;
-  
-  /* ⭐ FLEX PARA ORGANIZACIÓN INTERNA */
   display: flex;
   flex-direction: column;
-  height: 100%; /* ⭐ OCUPAR TODA LA ALTURA */
-  width: 100%;
+  flex: 1 1 300px;   /* ancho base flexible */
+  max-width: 350px;  /* evita que se agrande demasiado */
+  height: 100%;
+  box-sizing: border-box;
 }
+
 
 .tarjeta-torneo:hover {
   transform: translateY(-5px);
@@ -66,16 +81,14 @@
   line-height: 1.4;
 }
 
-/* ⭐ CONTENEDOR PARA BOTONES AL FINAL */
 .botones-tarjeta {
-  margin-top: auto; /* ⭐ MÁGICO: empuja hacia abajo */
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-top: 15px;
 }
 
-/* Indicadores de tipo de torneo */
 .tipo-indicador {
   padding: 6px 12px;
   border-radius: 20px;
@@ -152,7 +165,7 @@
   font-size: 1.1rem;
 }
 
-/* ===== Responsivo ===== */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .contenedor-torneos {
     padding: 20px 15px;
@@ -167,7 +180,6 @@
   }
 }
 
-/* Estado de loading para botones */
 .btnInscribir.loading {
   background: #777;
   cursor: not-allowed;

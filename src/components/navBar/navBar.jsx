@@ -42,7 +42,7 @@ export default function Navbar() {
 
           {usuario?.rol === 'user' && <li><Link to="/equipos">EQUIPOS</Link></li>}
 
-          <li><Link to="/faqs">FAQS</Link></li>
+          <li><Link to="/FAQs">FAQS</Link></li>
         </ul>
 
         {!usuario ? (

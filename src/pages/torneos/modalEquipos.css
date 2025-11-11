@@ -1,0 +1,111 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-equipos {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-equipos h3 {
+  color: #CA4D25;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.lista-equipos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.equipo-item {
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.equipo-item:hover {
+  border-color: #2E644B;
+  background-color: #f8f9fa;
+}
+
+.equipo-item.seleccionado {
+  border-color: #CA4D25;
+  background-color: #fff5f0;
+}
+
+.equipo-info h4 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+}
+
+.equipo-info p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.sin-equipos {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.sin-equipos p {
+  margin: 5px 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btnConfirmar {
+  padding: 10px 20px;
+  background: #CA4D25;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btnConfirmar:hover:not(:disabled) {
+  background: #b34421;
+}
+
+.btnConfirmar:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.inscripcion-confirmada {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+}

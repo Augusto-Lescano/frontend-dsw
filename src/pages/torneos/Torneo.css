@@ -1,3 +1,4 @@
+/* Torneo.css */
 .contenedor-torneos {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,6 +15,7 @@
   font-size: 2.5rem;
 }
 
+/* ==== Mensaje de error ==== */
 .error {
   background-color: #ffebee;
   color: #c62828;
@@ -27,24 +29,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: stretch;
   width: 100%;
 }
 
-.lista-torneos::-webkit-scrollbar {
-  height: 10px;
-}
-
-.lista-torneos::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-
-.lista-torneos::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-
+/* ==== Tarjetas - 2 POR FILA ==== */
 .tarjeta-torneo {
   background: white;
   border-radius: 12px;
@@ -54,12 +44,56 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  flex: 1 1 300px;   /* ancho base flexible */
-  max-width: 350px;  /* evita que se agrande demasiado */
-  height: 100%;
+  flex: 0 0 calc(50% - 20px); /* 2 tarjetas por fila */
+  width: calc(50% - 20px);
+  height: auto;
   box-sizing: border-box;
 }
 
+/* ==== Tarjeta especial para el botón Agregar ==== */
+.tarjeta-agregar {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #CA4D25;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(50% - 20px);
+  width: calc(50% - 20px);
+  height: auto;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #fffaf8;
+}
+
+.tarjeta-agregar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(202, 77, 37, 0.2);
+  border-color: #b34421;
+  background-color: #fff5f0;
+}
+
+/* Para pantallas medianas: 2 tarjetas por fila (se mantiene igual) */
+@media (max-width: 1024px) {
+  .tarjeta-torneo,
+  .tarjeta-agregar {
+    flex: 0 0 calc(50% - 20px);
+    width: calc(50% - 20px);
+  }
+}
+
+/* Para pantallas pequeñas: 1 tarjeta por fila */
+@media (max-width: 768px) {
+  .tarjeta-torneo,
+  .tarjeta-agregar {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
 
 .tarjeta-torneo:hover {
   transform: translateY(-5px);
@@ -81,36 +115,14 @@
   line-height: 1.4;
 }
 
-.botones-tarjeta {
-  margin-top: auto;
+.contenido-tarjeta {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-top: 15px;
+  justify-content: flex-start;
 }
 
-.tipo-indicador {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 10px 0;
-  display: inline-block;
-}
-
-.tipo-indicador.individual {
-  background: #e8f5e8;
-  color: #2e7d32;
-  border: 1px solid #4caf50;
-}
-
-.tipo-indicador.por-equipos {
-  background: #e3f2fd;
-  color: #1565c0;
-  border: 1px solid #2196f3;
-}
-
+/* Botón Inscribirse - VERDE */
 .btnInscribir {
   width: 100%;
   padding: 12px 20px;
@@ -135,7 +147,13 @@
   transform: none;
 }
 
-.btnCrud {
+.btnInscribir.loading {
+  background: #777;
+  cursor: not-allowed;
+}
+
+/* Botón Actualizar - NARANJA */
+.btnActualizar {
   width: 100%;
   padding: 12px 20px;
   background: #CA4D25;
@@ -148,21 +166,82 @@
   transition: all 0.3s ease;
 }
 
-.btnCrud:hover {
+.btnActualizar:hover {
   background: #b34421;
   transform: translateY(-2px);
 }
 
-.contenedor-botones {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
+/* Botón Eliminar - ROJO */
+.btnEliminar {
+  width: 100%;
+  padding: 12px 20px;
+  background: #b32d2d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.contenedor-botones .btnCrud {
-  width: auto;
-  padding: 12px 30px;
+.btnEliminar:hover {
+  background: #962222;
+  transform: translateY(-2px);
+}
+
+/* Botones dentro de las tarjetas */
+.botones-tarjeta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+/* Botón Agregar como tarjeta */
+.btnAgregarTarjeta {
+  background: transparent;
+  border: none;
+  color: #CA4D25;
   font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+}
+
+.btnAgregarTarjeta:hover {
+  color: #b34421;
+  transform: scale(1.05);
+}
+
+.icono-agregar {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.texto-agregar {
+  font-size: 1.2rem;
+}
+
+/* Indicador de inscripción confirmada */
+.inscripcion-confirmada {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+  border: 1px solid #4caf50;
 }
 
 /* ===== Responsive ===== */
@@ -170,17 +249,4 @@
   .contenedor-torneos {
     padding: 20px 15px;
   }
-
-  .lista-torneos {
-    grid-template-columns: 1fr;
-  }
-
-  .tarjeta-torneo {
-    padding: 15px;
-  }
-}
-
-.btnInscribir.loading {
-  background: #777;
-  cursor: not-allowed;
 }

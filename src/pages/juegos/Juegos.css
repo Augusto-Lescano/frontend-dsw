@@ -1,0 +1,272 @@
+.contenedor-juegos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 20px;
+  font-family: 'Arial', sans-serif;
+  min-height: calc(100vh - 80px);
+  display: block;
+}
+
+.contenedor-juegos h1 {
+  text-align: center;
+  color: #CA4D25;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+/* ==== Mensaje de error ==== */
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.lista-juegos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* ==== Tarjetas - 2 POR FILA ==== */
+.tarjeta-juego {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(50% - 20px); /* 2 tarjetas por fila */
+  width: calc(50% - 20px);
+  height: auto;
+  box-sizing: border-box;
+}
+
+/* ==== Tarjeta especial para el botón Agregar ==== */
+.tarjeta-agregar {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #CA4D25;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(50% - 20px);
+  width: calc(50% - 20px);
+  height: auto;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #fffaf8;
+}
+
+.tarjeta-agregar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(202, 77, 37, 0.2);
+  border-color: #b34421;
+  background-color: #fff5f0;
+}
+
+/* Para pantallas medianas: 2 tarjetas por fila (se mantiene igual) */
+@media (max-width: 1024px) {
+  .tarjeta-juego,
+  .tarjeta-agregar {
+    flex: 0 0 calc(50% - 20px);
+    width: calc(50% - 20px);
+  }
+}
+
+/* Para pantallas pequeñas: 1 tarjeta por fila */
+@media (max-width: 768px) {
+  .tarjeta-juego,
+  .tarjeta-agregar {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+
+.tarjeta-juego:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-juego h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #2E644B;
+  padding-bottom: 8px;
+}
+
+.tarjeta-juego p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.contenido-tarjeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Botón Ver Torneos */
+.btnVerTorneos {
+  width: 100%;
+  padding: 12px 20px;
+  background: #2E644B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.btnVerTorneos:hover:not(:disabled) {
+  background: #25553f;
+  transform: translateY(-2px);
+}
+
+.btnVerTorneos:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Sección de Torneos */
+.torneos-info {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  color: #333;
+  text-align: left;
+}
+
+.torneos-activos,
+.torneos-finalizados {
+  margin-bottom: 15px;
+}
+
+.torneos-info h4 {
+  color: #CA4D25;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.torneos-info ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.torneos-info li {
+  padding: 8px;
+  margin-bottom: 5px;
+  background: white;
+  border-radius: 4px;
+  border-left: 4px solid #2E644B;
+  font-size: 0.9rem;
+}
+
+.torneos-finalizados li {
+  border-left-color: #6c757d;
+  opacity: 0.8;
+}
+
+
+/* Botones dentro de las tarjetas */
+.botones-tarjeta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+
+/* Botón Actualizar - NARANJA */
+.btnCrud {
+  width: 100%;
+  padding: 12px 20px;
+  background: #CA4D25;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+.btnCrud:hover {
+  background: #b34421;
+  transform: translateY(-2px);
+}
+
+
+/* Botón Eliminar - ROJO */
+.btnEliminar {
+  width: 100%;
+  padding: 12px 20px;
+  background: #b32d2d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnEliminar:hover {
+  background: #962222;
+  transform: translateY(-2px);
+}
+
+/* Botón Agregar como tarjeta */
+.btnAgregarTarjeta {
+  background: transparent;
+  border: none;
+  color: #CA4D25;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+}
+
+.btnAgregarTarjeta:hover {
+  color: #b34421;
+  transform: scale(1.05);
+}
+
+.icono-agregar {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.texto-agregar {
+  font-size: 1.2rem;
+}

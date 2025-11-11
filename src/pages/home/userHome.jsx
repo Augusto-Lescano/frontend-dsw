@@ -7,11 +7,11 @@ export default function UserHome() {
 
   return (
     <div className="user-home">
-      <h1>¡Bienvenido, {usuario?.nombre || 'Usuario'}!</h1>
-      <p>
+      <h2>¡Bienvenido, {usuario?.nombre || 'Usuario'}!</h2>
+      <h5>
         Esta es tu página de usuario. <br />
         Si estás listo para competir, podés inscribirte en un torneo o incluso crear tu propio equipo junto a otros jugadores.
-      </p>
+      </h5>
     </div>
   );
 }

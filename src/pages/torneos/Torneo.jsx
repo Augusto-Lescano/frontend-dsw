@@ -86,22 +86,24 @@ function Torneos() {
                             </div>
                         </div>
                         
-                        {/* ⭐ CONTENEDOR DE BOTONES AL FINAL */}
+                        {/* CONTENEDOR DE BOTONES AL FINAL */}
                         <div className="botones-tarjeta">
+                          {(usuario?.rol === 'admin' || usuario?.rol === 'user') && (
                             <button 
-                                className={`btnInscribir ${inscripcionLoading === t.id ? 'loading' : ''}`}
-                                onClick={() => handleInscripcion(t.id)}
-                                disabled={inscripcionLoading === t.id}
-                            >
-                                {inscripcionLoading === t.id ? 'Inscribiendo...' : 'Inscribirse'}
+                              className={`btnInscribir ${inscripcionLoading === t.id ? 'loading' : ''}`}
+                              onClick={() => handleInscripcion(t.id)}
+                              disabled={inscripcionLoading === t.id}>
+                              {inscripcionLoading === t.id ? 'Inscribiendo...' : 'Inscribirse'}
                             </button>
+                          )}
                             
-                            <button 
+                            {usuario?.rol === 'admin' && (
+                              <button 
                                 className='btnCrud'
-                                onClick={() => handleActualizarTorneo(t.id)}
-                            >
+                                onClick={() => handleActualizarTorneo(t.id)}>
                                 Actualizar
-                            </button>
+                              </button>
+                            )}
                         </div>
                     </div>
                 ))

@@ -1,4 +1,4 @@
-.contenedor-torneos {
+.contenedor-equipos {
   max-width: 1200px;
   margin: 0 auto;
   padding: 100px 20px 20px;
@@ -7,7 +7,7 @@
   display: block;
 }
 
-.contenedor-torneos h1 {
+.contenedor-equipos h1 {
   text-align: center;
   color: #CA4D25;
   margin-bottom: 30px;
@@ -23,29 +23,16 @@
   text-align: center;
 }
 
-.lista-torneos {
+.lista-equipos {
   display: flex;
-  flex-wrap: wrap;       /* permite que bajen de línea */
+  flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start; /* alineación natural al inicio */
-  align-items: stretch;  /* todas las tarjetas de igual altura si es posible */
+  justify-content: flex-start;
+  align-items: stretch;
   width: 100%;
 }
 
-.lista-torneos::-webkit-scrollbar {
-  height: 10px;
-}
-
-.lista-torneos::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-
-.lista-torneos::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-
-.tarjeta-torneo {
+.tarjeta-equipo {
   background: white;
   border-radius: 12px;
   padding: 20px;
@@ -54,19 +41,18 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  flex: 1 1 300px;   /* ancho base flexible */
-  max-width: 350px;  /* evita que se agrande demasiado */
+  flex: 1 1 300px;
+  max-width: 350px;
   height: 100%;
   box-sizing: border-box;
 }
 
-
-.tarjeta-torneo:hover {
+.tarjeta-equipo:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-.tarjeta-torneo h3 {
+.tarjeta-equipo h3 {
   color: #2c3e50;
   margin-bottom: 15px;
   font-size: 1.4rem;
@@ -74,11 +60,30 @@
   padding-bottom: 8px;
 }
 
-.tarjeta-torneo p {
+.tarjeta-equipo p {
   margin: 8px 0;
   color: #555;
   font-size: 0.95rem;
   line-height: 1.4;
+}
+
+.miembros-lista {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  color: #333;
+  text-align: left;
+}
+
+.miembros-lista h4 {
+  color: #CA4D25;
+  margin-bottom: 10px;
+}
+
+.miembros-lista ul {
+  list-style-type: disc;
+  padding-left: 20px;
 }
 
 .botones-tarjeta {
@@ -87,28 +92,6 @@
   flex-direction: column;
   gap: 10px;
   padding-top: 15px;
-}
-
-.tipo-indicador {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 10px 0;
-  display: inline-block;
-}
-
-.tipo-indicador.individual {
-  background: #e8f5e8;
-  color: #2e7d32;
-  border: 1px solid #4caf50;
-}
-
-.tipo-indicador.por-equipos {
-  background: #e3f2fd;
-  color: #1565c0;
-  border: 1px solid #2196f3;
 }
 
 .btnInscribir {
@@ -153,6 +136,24 @@
   transform: translateY(-2px);
 }
 
+.btnEliminar {
+  width: 100%;
+  padding: 12px 20px;
+  background: #b32d2d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnEliminar:hover {
+  background: #962222;
+  transform: translateY(-2px);
+}
+
 .contenedor-botones {
   margin-top: 30px;
   display: flex;
@@ -165,22 +166,12 @@
   font-size: 1.1rem;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .contenedor-torneos {
+  .contenedor-equipos {
     padding: 20px 15px;
   }
 
-  .lista-torneos {
-    grid-template-columns: 1fr;
-  }
-
-  .tarjeta-torneo {
+  .tarjeta-equipo {
     padding: 15px;
   }
-}
-
-.btnInscribir.loading {
-  background: #777;
-  cursor: not-allowed;
 }

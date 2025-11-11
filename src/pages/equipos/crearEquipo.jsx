@@ -1,0 +1,87 @@
+import { useEffect, useState } from 'react';
+import { crearEquipo } from '../../services/equipoService.js';
+import { obtenerUsuariosSinEquipo } from '../../services/usuarioService.js'; // nuevo endpoint
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/useAuth.js';
+import './Equipo.css';
+
+export default function CrearEquipo() {
+  const [nombre, setNombre] = useState('');
+  const [miembros, setMiembros] = useState([]);
+  const [usuariosDisponibles, setUsuariosDisponibles] = useState([]);
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();
+  const { usuario } = useAuth();
+
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      try {
+        const res = await obtenerUsuariosSinEquipo();
+        setUsuariosDisponibles(res);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+    fetchUsuarios();
+  }, []);
+
+  const handleSeleccionarMiembro = (id) => {
+    setMiembros((prev) =>
+      prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
+    );
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await crearEquipo({
+        nombre,
+        capitanId: usuario.id,
+        miembros,
+      });
+      navigate('/equipos');
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  return (
+    <div className="contenedor-torneos">
+      <h1>Crear nuevo equipo</h1>
+      {error && <p className="error">{error}</p>}
+
+      <form onSubmit={handleSubmit} className="form-equipo">
+        <input
+          type="text"
+          placeholder="Nombre del equipo"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          required
+        />
+
+        <h3>Seleccionar miembros disponibles</h3>
+        <div className="miembros-lista">
+          {usuariosDisponibles.length > 0 ? (
+            usuariosDisponibles.map((u) => (
+              <label key={u.id} className="miembro-item">
+                <input
+                  type="checkbox"
+                  checked={miembros.includes(u.id)}
+                  onChange={() => handleSeleccionarMiembro(u.id)}
+                />
+                {u.nombre}
+              </label>
+            ))
+          ) : (
+            <p>No hay usuarios disponibles.</p>
+          )}
+        </div>
+
+        <button className="btnCrud" type="submit">
+          Crear equipo
+        </button>
+      </form>
+    </div>
+  );
+}

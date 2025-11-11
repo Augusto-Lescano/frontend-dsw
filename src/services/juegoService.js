@@ -9,7 +9,6 @@ const apiJuegos = axios.create({
 export async function obtenerJuegos() {
   try {
     const res = await apiJuegos.get('/');
-    console.log('✅ Respuesta juegos:', res.data); // Para debug
     return res.data.data;
   } catch (error) {
     console.error('❌ Error obteniendo juegos:', error);

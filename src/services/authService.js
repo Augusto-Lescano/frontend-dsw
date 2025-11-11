@@ -76,6 +76,16 @@ export const meReq = async () => {
   }
 };
 
+export const obtenerUsuariosSinEquipo = async () => {
+  try {
+    const res = await api.get('/usuarios/sin-equipo'); // backend debe exponer esta ruta
+    return res.data.data;
+  } catch (err) {
+    console.error('Error obteniendo usuarios sin equipo:', err);
+    throw err;
+  }
+};
+
 // A FUTURO
 // Implementar refresh tokens.
 

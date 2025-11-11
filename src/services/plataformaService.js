@@ -1,18 +1,16 @@
 import axios from "axios";
 
-// ⭐ Crear instancia de axios con configuración común
 const apiPlataformas = axios.create({
   baseURL: 'http://localhost:3000/api/plataforma',
-  withCredentials: true, // ⭐ Importante para las cookies HTTP-only
+  withCredentials: true,
 });
 
 export async function obtenerPlataformas() {
   try {
     const res = await apiPlataformas.get('/');
-    console.log('✅ Respuesta plataformas:', res.data); // Para debug
     return res.data.data;
   } catch (error) {
-    console.error('❌ Error obteniendo plataformas:', error);
+    console.error('Error obteniendo plataformas:', error);
     throw error;
   }
 }

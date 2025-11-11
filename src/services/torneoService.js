@@ -25,21 +25,15 @@ export async function crearTorneo(torneo) {
   return res.data.data;
 }
 
+export async function actualizarTorneo(id, torneo) {
+  const res = await api.put(`/${id}`, torneo, {
+    headers: { 'Content-Type': 'application/json' },
+  });
+  return res.data.data;
+}
+
 // Eliminar un torneo por ID (solo admins)
 export async function eliminarTorneo(id) {
   await api.delete(`/${id}`);
   return true;
-}
-
-// Inscribirse en un torneo
-export async function inscribirEnTorneo(torneoId, inscripcionData) {
-  const body = {};
-  if (usuarioId) body.usuarioId = usuarioId;
-  if (equipoId) body.equipoId = equipoId;
-
-  const res = await api.post(`/${torneoId}/inscribir`, inscripcionData, {
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true,
-  });
-  return res.data.data;
 }

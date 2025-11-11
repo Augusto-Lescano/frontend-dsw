@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { crearEquipo } from '../../services/equipoService.js';
-import { obtenerUsuariosSinEquipo } from '../../services/usuarioService.js'; // nuevo endpoint
+import { obtenerUsuariosSinEquipo } from '../../services/authService.js'; // nuevo endpoint
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth.js';
-import './Equipo.css';
+import './crearEquipo.css';
 
 export default function CrearEquipo() {
   const [nombre, setNombre] = useState('');
+  const [descripcion, setDescripcion] = useState('');
   const [miembros, setMiembros] = useState([]);
   const [usuariosDisponibles, setUsuariosDisponibles] = useState([]);
   const [error, setError] = useState('');
@@ -37,7 +38,8 @@ export default function CrearEquipo() {
     try {
       await crearEquipo({
         nombre,
-        capitanId: usuario.id,
+        capitan: usuario.id,
+        descripcion,
         miembros,
       });
       navigate('/equipos');
@@ -47,7 +49,7 @@ export default function CrearEquipo() {
   };
 
   return (
-    <div className="contenedor-torneos">
+    <div className="contenedor-equipos">
       <h1>Crear nuevo equipo</h1>
       {error && <p className="error">{error}</p>}
 
@@ -57,6 +59,14 @@ export default function CrearEquipo() {
           placeholder="Nombre del equipo"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Descripción"
+          value={descripcion}
+          onChange={(e) => setDescripcion(e.target.value)}
           required
         />
 

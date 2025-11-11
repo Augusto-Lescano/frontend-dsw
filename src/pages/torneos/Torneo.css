@@ -25,10 +25,10 @@
 
 .lista-torneos {
   display: flex;
-  flex-wrap: wrap;       /* permite que bajen de línea */
+  flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start; /* alineación natural al inicio */
-  align-items: stretch;  /* todas las tarjetas de igual altura si es posible */
+  justify-content: flex-start; 
+  align-items: stretch;
   width: 100%;
 }
 

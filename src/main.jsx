@@ -11,7 +11,7 @@ import Register from './pages/register/registerForm.jsx';
 import Torneos from './pages/torneos/Torneo.jsx';
 import CrearTorneo from './pages/torneos/crear.jsx';
 import Equipos from './pages/equipos/Equipo.jsx';
-import CrearEquipo from './pages/equipos/Equipo.jsx';
+import CrearEquipo from './pages/equipos/crearEquipo.jsx';
 import ActualizarEquipo from './pages/equipos/actualizarEquipo.jsx';
 import './styles/main.css';
 //import ActualizarTorneo from './pages/torneos/actualizar.jsx';

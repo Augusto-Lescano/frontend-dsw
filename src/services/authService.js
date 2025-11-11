@@ -9,10 +9,7 @@ const api = axios.create({
   },
 });
 
-// =====================
 // Interceptores
-// =====================
-
 // Interceptor para manejar errores globales (401, 403, etc.)
 api.interceptors.response.use(
   (response) => response,
@@ -34,9 +31,7 @@ api.interceptors.response.use(
   }
 );
 
-// =====================
 // Funciones de autenticación
-// =====================
 
 export const loginReq = async (identifier, contrasenia) => {
   try {

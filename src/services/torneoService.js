@@ -32,13 +32,14 @@ export async function eliminarTorneo(id) {
 }
 
 // Inscribirse en un torneo
-export async function inscribirEnTorneo(torneoId, usuarioId, equipoId) {
+export async function inscribirEnTorneo(torneoId, inscripcionData) {
   const body = {};
   if (usuarioId) body.usuarioId = usuarioId;
   if (equipoId) body.equipoId = equipoId;
 
-  const res = await api.post(`/${torneoId}/inscribir`, body, {
+  const res = await api.post(`/${torneoId}/inscribir`, inscripcionData, {
     headers: { 'Content-Type': 'application/json' },
+    withCredentials: true,
   });
   return res.data.data;
 }

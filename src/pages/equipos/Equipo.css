@@ -14,6 +14,7 @@
   font-size: 2.5rem;
 }
 
+/* ==== Mensaje de error ==== */
 .error {
   background-color: #ffebee;
   color: #c62828;
@@ -32,6 +33,7 @@
   width: 100%;
 }
 
+/* ==== Tarjetas - 2 POR FILA ==== */
 .tarjeta-equipo {
   background: white;
   border-radius: 12px;
@@ -41,10 +43,26 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  flex: 1 1 300px;
-  max-width: 350px;
-  height: 100%;
+  flex: 0 0 calc(50% - 20px); /* 2 tarjetas por fila */
+  width: calc(50% - 20px);
+  height: auto;
   box-sizing: border-box;
+}
+
+/* Para pantallas medianas: 2 tarjetas por fila (se mantiene igual) */
+@media (max-width: 1024px) {
+  .tarjeta-equipo {
+    flex: 0 0 calc(50% - 20px);
+    width: calc(50% - 20px);
+  }
+}
+
+/* Para pantallas pequeñas: 1 tarjeta por fila */
+@media (max-width: 768px) {
+  .tarjeta-equipo {
+    flex: 0 0 100%;
+    width: 100%;
+  }
 }
 
 .tarjeta-equipo:hover {
@@ -67,6 +85,14 @@
   line-height: 1.4;
 }
 
+.contenido-tarjeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ==== Lista de miembros ==== */
 .miembros-lista {
   margin-top: 15px;
   padding: 10px;
@@ -86,6 +112,7 @@
   padding-left: 20px;
 }
 
+/* ==== Botones dentro de las tarjetas ==== */
 .botones-tarjeta {
   margin-top: auto;
   display: flex;
@@ -118,6 +145,7 @@
   transform: none;
 }
 
+/* ==== Botones CRUD ==== */
 .btnCrud {
   width: 100%;
   padding: 12px 20px;
@@ -154,24 +182,19 @@
   transform: translateY(-2px);
 }
 
+/* ==== Botón agregar (al final) ==== */
 .contenedor-botones {
-  margin-top: 30px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
+  position: sticky;
+  bottom: 20px;
+  background: transparent;
+  z-index: 5;
 }
 
 .contenedor-botones .btnCrud {
   width: auto;
   padding: 12px 30px;
   font-size: 1.1rem;
-}
-
-@media (max-width: 768px) {
-  .contenedor-equipos {
-    padding: 20px 15px;
-  }
-
-  .tarjeta-equipo {
-    padding: 15px;
-  }
 }

@@ -1,1 +1,140 @@
-/*falta*/
+.contenedor-equipos {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  font-family: 'Arial', sans-serif;
+  min-height: calc(100vh - 80px);
+  display: block;
+}
+
+.contenedor-equipos h1 {
+  text-align: center;
+  color: #CA4D25;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-equipo {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-equipo input[type="text"] {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-equipo input[type="text"]:focus {
+  outline: none;
+  border-color: #2E644B;
+  box-shadow: 0 0 4px rgba(46, 100, 75, 0.4);
+}
+
+.form-equipo h3 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #2E644B;
+  padding-bottom: 5px;
+}
+
+.miembros-lista {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+.miembro-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.miembro-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2E644B;
+  cursor: pointer;
+}
+
+.miembros-lista p {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}
+
+.btnCrud {
+  padding: 12px 20px;
+  background: #CA4D25;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnCrud:hover {
+  background: #b34421;
+  transform: translateY(-2px);
+}
+
+.btnCrud:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Scroll personalizado para la lista de miembros */
+.miembros-lista::-webkit-scrollbar {
+  width: 8px;
+}
+
+.miembros-lista::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.miembros-lista::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+@media (max-width: 768px) {
+  .contenedor-equipos {
+    padding: 60px 15px 20px;
+  }
+
+  .form-equipo {
+    padding: 20px;
+  }
+
+  .form-equipo h3 {
+    font-size: 1.1rem;
+  }
+}

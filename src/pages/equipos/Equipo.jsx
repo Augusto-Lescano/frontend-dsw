@@ -39,36 +39,48 @@ export default function Equipos() {
   };
 
   const handleMostrarMiembros = (equipo) => {
-    if (equipoSeleccionado?.id === equipo.id) {
-      setEquipoSeleccionado(null);
-    } else {
-      setEquipoSeleccionado(equipo);
-    }
+    setEquipoSeleccionado((prev) =>
+      prev?.id === equipo.id ? null : equipo
+    );
   };
 
   return (
-    <div className="contenedor-torneos">
-      <h1>Lista de equipos</h1>
+    <div className="contenedor-equipos">
       {error && <p className="error">{error}</p>}
 
-      {usuario && (
-        <div className="contenedor-botones">
-          <button className="btnCrud" onClick={handleCrearEquipo}>
-            Crear equipo
-          </button>
-        </div>
-      )}
-
-      <div className="lista-torneos">
+      {/* Tarjetas de equipos */}
+      <div className="lista-equipos">
         {equipos.length > 0 ? (
           equipos.map((e) => (
-            <div key={e.id} className="tarjeta-torneo">
-              <h3>{e.nombre}</h3>
-              <p><strong>Capitán:</strong> {e.capitan?.nombre || 'Sin capitán'}</p>
-              <p><strong>Miembros:</strong> {e.miembros?.length || 0}</p>
+            <div key={e.id} className="tarjeta-equipo">
+              <div className="contenido-tarjeta">
+                <h3>{e.nombre}</h3>
+                <p><strong>Capitán:</strong> {e.capitan?.nombre || 'Sin capitán'}</p>
+                <p><strong>Miembros:</strong> {e.miembros?.length || 0}</p>
+                <p><strong>Descripción:</strong> {e.descripcion || 'Sin descripción'}</p>
 
+                {equipoSeleccionado?.id === e.id && (
+                  <div className="miembros-lista">
+                    <h4>Miembros del equipo:</h4>
+                    {e.miembros && e.miembros.length > 0 ? (
+                      <ul>
+                        {e.miembros.map((m) => (
+                          <li key={m.id}>{m.nombre}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>No hay miembros en este equipo.</p>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Botones al final de la tarjeta */}
               <div className="botones-tarjeta">
-                <button className="btnInscribir" onClick={() => handleMostrarMiembros(e)}>
+                <button
+                  className="btnInscribir"
+                  onClick={() => handleMostrarMiembros(e)}
+                >
                   {equipoSeleccionado?.id === e.id
                     ? 'Ocultar miembros'
                     : 'Ver miembros'}
@@ -82,7 +94,6 @@ export default function Equipos() {
                     >
                       Actualizar
                     </button>
-
                     <button
                       className="btnCrud"
                       style={{ background: '#89211c' }}
@@ -93,27 +104,21 @@ export default function Equipos() {
                   </>
                 )}
               </div>
-
-              {equipoSeleccionado?.id === e.id && (
-                <div className="miembros-lista">
-                  <h4>Miembros del equipo:</h4>
-                  {e.miembros && e.miembros.length > 0 ? (
-                    <ul>
-                      {e.miembros.map((m) => (
-                        <li key={m.id}>{m.nombre}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>No hay miembros en este equipo.</p>
-                  )}
-                </div>
-              )}
             </div>
           ))
         ) : (
           <p>No hay equipos disponibles.</p>
         )}
       </div>
+
+      {/* Botón Agregar igual que en torneos */}
+      {usuario && (
+        <div className="contenedor-botones">
+          <button className="btnCrud" onClick={handleCrearEquipo}>
+            Agregar
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -216,7 +216,7 @@ function CrearTorneo() {
         <h1>Crear Nuevo Torneo</h1>
         {tipoTorneoSeleccionado && (
           <div className={`tipo-indicador ${tipoTorneoSeleccionado.esIndividual ? 'individual' : 'por-equipos'}`}>
-            {tipoTorneoSeleccionado.esIndividual ? '⭐ Torneo Individual' : '🏆 Torneo por Equipos'}
+            {tipoTorneoSeleccionado.esIndividual ? 'Torneo Individual' : 'Torneo por Equipos'}
           </div>
         )}
       </div>

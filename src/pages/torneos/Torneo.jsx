@@ -28,10 +28,28 @@ function Torneos() {
     setError("");
 
     try{
-      const usuarioId = usuario?.data.id ?? null;
-      const equipoId = null;
+      const usuarioId = usuario?.id ?? usuario?.data?.id ?? null;
+      if(!usuarioId) {
+        setError('Usuario no identificado');
+        setInscripcionLoading(null);
+        return;
+      }
+      let inscripcionData;
 
-      await inscribirEnTorneo(torneoId,usuarioId,equipoId);
+      if (torneoId.tipoDeTorneo?.esIndividual) {
+        inscripcionData = { usuarioId };
+      } else {
+        const equipoSeleccionadoId = prompt("Ingrese el ID de su equipo para inscribirse:");
+        if (!equipoSeleccionadoId){
+          alert('Debes ingresar un equipo para inscribirte en este torneo');
+          setInscripcionLoading(null);
+          return;
+        }
+        inscripcionData = { equipoId: Number(equipoSeleccionadoId) }
+      }
+
+      const res = await inscribirEnTorneo(torneoId,inscripcionData);
+      console.log('Respuesta inscribirEnTorneo ->', res);
       alert('¡Inscripción exitosa!');
     } catch(err) {
       setError(err.message);
@@ -56,18 +74,14 @@ function Torneos() {
             {torneos.length > 0 ? (
                 torneos.map ((t)=>(
                     <div key={t.id} className="tarjeta-torneo">
-                        {/* ⭐ CONTENIDO DE LA TARJETA */}
                         <div className="contenido-tarjeta">
                             <h3>{t.nombre}</h3>
                             <p>Juego: {t.juego?.nombre}</p>
                             <p>Tipo: {t.tipoDeTorneo?.nombre}</p>
                             
-                            {/* ⭐ Mostrar información según tipo de torneo */}
                             {t.tipoDeTorneo?.esIndividual ? (
-                                // ⭐ Para torneos individuales
                                 <p>Jugadores Individuales: {t.cantJugadores}</p>
                             ) : (
-                                // ⭐ Para torneos por equipos
                                 <>
                                     <p>Jugadores por Equipo: {t.cantJugadoresEquipo}</p>
                                     <p>Cantidad de Equipos: {t.cantEquipos}</p>
@@ -80,18 +94,16 @@ function Torneos() {
                             <p>Apertura Inscripcion: {new Date(t.fechaInicioIns).toLocaleDateString()}</p>
                             <p>Cierre Inscripcion: {new Date(t.fechaFinIns).toLocaleDateString()}</p>
                             
-                            {/* ⭐ Indicador visual del tipo de torneo */}
                             <div className={`tipo-indicador ${t.tipoDeTorneo?.esIndividual ? 'individual' : 'por-equipos'}`}>
-                                {t.tipoDeTorneo?.esIndividual ? '🎯 Torneo Individual' : '🏆 Torneo por Equipos'}
+                                {t.tipoDeTorneo?.esIndividual ? 'Torneo Individual' : 'Torneo por Equipos'}
                             </div>
                         </div>
                         
-                        {/* CONTENEDOR DE BOTONES AL FINAL */}
                         <div className="botones-tarjeta">
-                          {(usuario?.rol === 'admin' || usuario?.rol === 'user') && (
+                          {(usuario?.rol === 'admin' || usuario?.rol === 'user') && Date.now() >= new Date(t.fechaInicioIns) && Date.now() <= new Date(t.fechaFinIns) && (
                             <button 
                               className={`btnInscribir ${inscripcionLoading === t.id ? 'loading' : ''}`}
-                              onClick={() => handleInscripcion(t.id)}
+                              onClick={() => handleInscripcion(t)}
                               disabled={inscripcionLoading === t.id}>
                               {inscripcionLoading === t.id ? 'Inscribiendo...' : 'Inscribirse'}
                             </button>

@@ -1,0 +1,177 @@
+.contenedor-equipos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 20px;
+  font-family: 'Arial', sans-serif;
+  min-height: calc(100vh - 80px);
+  display: block;
+}
+
+.contenedor-equipos h1 {
+  text-align: center;
+  color: #CA4D25;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.lista-equipos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+}
+
+.tarjeta-equipo {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 300px;
+  max-width: 350px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.tarjeta-equipo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-equipo h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #2E644B;
+  padding-bottom: 8px;
+}
+
+.tarjeta-equipo p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.miembros-lista {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  color: #333;
+  text-align: left;
+}
+
+.miembros-lista h4 {
+  color: #CA4D25;
+  margin-bottom: 10px;
+}
+
+.miembros-lista ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.botones-tarjeta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.btnInscribir {
+  width: 100%;
+  padding: 12px 20px;
+  background: #2E644B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnInscribir:hover:not(:disabled) {
+  background: #25553f;
+  transform: translateY(-2px);
+}
+
+.btnInscribir:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btnCrud {
+  width: 100%;
+  padding: 12px 20px;
+  background: #CA4D25;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnCrud:hover {
+  background: #b34421;
+  transform: translateY(-2px);
+}
+
+.btnEliminar {
+  width: 100%;
+  padding: 12px 20px;
+  background: #b32d2d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnEliminar:hover {
+  background: #962222;
+  transform: translateY(-2px);
+}
+
+.contenedor-botones {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-botones .btnCrud {
+  width: auto;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .contenedor-equipos {
+    padding: 20px 15px;
+  }
+
+  .tarjeta-equipo {
+    padding: 15px;
+  }
+}

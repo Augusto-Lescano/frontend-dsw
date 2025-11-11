@@ -10,6 +10,9 @@ import Login from './pages/login/loginForm.jsx';
 import Register from './pages/register/registerForm.jsx';
 import Torneos from './pages/torneos/Torneo.jsx';
 import CrearTorneo from './pages/torneos/crear.jsx';
+import Equipos from './pages/equipos/Equipo.jsx';
+import CrearEquipo from './pages/equipos/Equipo.jsx';
+import ActualizarEquipo from './pages/equipos/actualizarEquipo.jsx';
 import './styles/main.css';
 //import ActualizarTorneo from './pages/torneos/actualizar.jsx';
 
@@ -25,6 +28,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="admin" element={<AdminHome />} />
             <Route path="torneos" element={<Torneos />} />
             <Route path="torneos/crear" element={<CrearTorneo />} />
+            <Route path="/equipos" element={<Equipos />} />
+            <Route path="/equipos/crear" element={<CrearEquipo />} />
+            <Route path="/equipos/actualizar/:id" element={<ActualizarEquipo />} />
           </Route>
 
           {/* Pantallas fuera del layout */}

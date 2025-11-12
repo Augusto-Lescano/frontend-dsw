@@ -9,7 +9,7 @@ export default function UsuariosAdmin() {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const data = await obtenerUsuariosAdmin();
+        const data = await obtenerUsuariosAdmin(); // ya retorna data.data en el service
         setUsuarios(data);
       } catch (err) {
         setError(err.message || "Error al cargar usuarios");
@@ -49,18 +49,27 @@ export default function UsuariosAdmin() {
               <p><strong>Rol:</strong> {usuario.rol}</p>
 
               {/* Equipos donde participa */}
-              {usuario.equipos && usuario.equipos.length > 0 && (
-                <p><strong>Miembro de:</strong> {usuario.equipos.map(e => e.nombre).join(", ")}</p>
+              {usuario.equiposMiembro?.length > 0 && (
+                <p>
+                  <strong>Miembro de:</strong>{" "}
+                  {usuario.equiposMiembro.join(", ")}
+                </p>
               )}
 
               {/* Equipos donde es capitán */}
-              {usuario.equiposCapitan && usuario.equiposCapitan.length > 0 && (
-                <p><strong>Capitán de:</strong> {usuario.equiposCapitan.map(e => e.nombre).join(", ")}</p>
+              {usuario.equiposCapitan?.length > 0 && (
+                <p>
+                  <strong>Capitán de:</strong>{" "}
+                  {usuario.equiposCapitan.join(", ")}
+                </p>
               )}
 
               {/* Torneos creados */}
-              {usuario.torneosCreados && usuario.torneosCreados.length > 0 && (
-                <p><strong>Torneos creados:</strong> {usuario.torneosCreados.map(t => t.nombre).join(", ")}</p>
+              {usuario.torneosCreados?.length > 0 && (
+                <p>
+                  <strong>Torneos creados:</strong>{" "}
+                  {usuario.torneosCreados.join(", ")}
+                </p>
               )}
 
               <button className="btn-eliminar" onClick={() => handleEliminar(usuario.id)}>

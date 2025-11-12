@@ -1,5 +1,3 @@
-/* ===== navbar.css ===== */
-
 .contenedor-header {
   display: flex;
   align-items: center;
@@ -32,7 +30,6 @@
   filter: brightness(1.1);
 }
 
-/* Contenedor de los links */
 .contenedor-navbar-links {
   display: flex;
   align-items: center;
@@ -60,9 +57,8 @@
   color: #CA4D25;
 }
 
-/* === Botones de login / registro === */
 .contenedor-navbar-links button {
-  background: #2E644B;          /* verde oscuro, combina con el ícono */
+  background: #2E644B;
   border: none;
   color: #fff;
   border-radius: 5px;
@@ -74,20 +70,18 @@
 }
 
 .contenedor-navbar-links button:hover {
-  background: #25553f;          /* tono más oscuro al pasar el mouse */
+  background: #25553f; 
   transform: translateY(-2px);
 }
 
-/* === Si querés dejar uno de los botones (por ejemplo "Registrarse") diferente === */
 .contenedor-navbar-links .btn-secundario {
-  background: #CA4D25;          /* color acento */
+  background: #CA4D25; 
 }
 
 .contenedor-navbar-links .btn-secundario:hover {
   background: #b34421;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
   .navbar-links li a {
     font-size: 14px;
@@ -96,7 +90,7 @@
 
 @media (max-width: 480px) {
   .navbar-links {
-    display: none; /* Oculta menú en móviles pequeños */
+    display: none; 
   }
 
   .contenedor-header {

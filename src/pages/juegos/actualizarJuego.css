@@ -122,7 +122,7 @@
 .btnCrud {
   flex: 1;
   padding: 15px 20px;
-  background: #CA4D25; /* Naranja */
+  background: #CA4D25;
   color: white;
   border: none;
   border-radius: 8px;
@@ -167,7 +167,6 @@
   transform: none;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .contenedor-actualizar-juego {
     padding: 80px 15px 20px;

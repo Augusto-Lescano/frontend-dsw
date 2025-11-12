@@ -6,6 +6,6 @@ export default function RoleRoute({ children, roles = [] }) {
   const { usuario, loading } = useAuth();
   if (loading) return null;
   if (!usuario) return <Navigate to="/login" replace />;
-  if (!roles.includes(usuario.rol)) return <Navigate to="/" replace />; // o 403
+  if (!roles.includes(usuario.rol)) return <Navigate to="/" replace />;
   return children;
 }

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-
-// Configuración base del cliente Axios
 const api = axios.create({
   baseURL: 'http://localhost:3000/api/equipos',
   withCredentials: true, // Envía cookies httpOnly automáticamente
@@ -17,7 +15,7 @@ api.interceptors.response.use(
   async (error) => {
     if (error.response?.status === 401) {
       console.warn('Token expirado o usuario no autenticado');
-      // Podrías manejar un refresh token aquí en el futuro
+      // Aca podemos agregar refresh token en el futuro
     }
 
     return Promise.reject(
@@ -29,8 +27,6 @@ api.interceptors.response.use(
   }
 );
 
-
-// Funciones del servicio de equipos
 // Obtener todos los equipos
 export const obtenerEquipos = async () => {
   try {

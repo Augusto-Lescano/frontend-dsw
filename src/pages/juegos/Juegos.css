@@ -14,7 +14,6 @@
   font-size: 2.5rem;
 }
 
-/* ==== Mensaje de error ==== */
 .error {
   background-color: #ffebee;
   color: #c62828;
@@ -33,7 +32,6 @@
   width: 100%;
 }
 
-/* ==== Tarjetas - 2 POR FILA ==== */
 .tarjeta-juego {
   background: white;
   border-radius: 12px;
@@ -43,13 +41,12 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  flex: 0 0 calc(50% - 20px); /* 2 tarjetas por fila */
+  flex: 0 0 calc(50% - 20px);
   width: calc(50% - 20px);
   height: auto;
   box-sizing: border-box;
 }
 
-/* ==== Tarjeta especial para el botón Agregar ==== */
 .tarjeta-agregar {
   background: white;
   border-radius: 12px;
@@ -76,7 +73,6 @@
   background-color: #fff5f0;
 }
 
-/* Para pantallas medianas: 2 tarjetas por fila (se mantiene igual) */
 @media (max-width: 1024px) {
   .tarjeta-juego,
   .tarjeta-agregar {
@@ -85,7 +81,6 @@
   }
 }
 
-/* Para pantallas pequeñas: 1 tarjeta por fila */
 @media (max-width: 768px) {
   .tarjeta-juego,
   .tarjeta-agregar {
@@ -121,7 +116,6 @@
   justify-content: flex-start;
 }
 
-/* Botón Ver Torneos */
 .btnVerTorneos {
   width: 100%;
   padding: 12px 20px;
@@ -147,7 +141,6 @@
   transform: none;
 }
 
-/* Sección de Torneos */
 .torneos-info {
   margin-top: 15px;
   padding: 15px;
@@ -187,8 +180,6 @@
   opacity: 0.8;
 }
 
-
-/* Botones dentro de las tarjetas */
 .botones-tarjeta {
   margin-top: auto;
   display: flex;
@@ -197,8 +188,6 @@
   padding-top: 15px;
 }
 
-
-/* Botón Actualizar - NARANJA */
 .btnCrud {
   width: 100%;
   padding: 12px 20px;
@@ -212,14 +201,11 @@
   transition: all 0.3s ease;
 }
 
-
 .btnCrud:hover {
   background: #b34421;
   transform: translateY(-2px);
 }
 
-
-/* Botón Eliminar - ROJO */
 .btnEliminar {
   width: 100%;
   padding: 12px 20px;
@@ -238,7 +224,6 @@
   transform: translateY(-2px);
 }
 
-/* Botón Agregar como tarjeta */
 .btnAgregarTarjeta {
   background: transparent;
   border: none;

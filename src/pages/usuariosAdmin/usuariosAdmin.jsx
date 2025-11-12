@@ -9,7 +9,7 @@ export default function UsuariosAdmin() {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const data = await obtenerUsuariosAdmin(); // ya retorna data.data en el service
+        const data = await obtenerUsuariosAdmin();
         setUsuarios(data);
       } catch (err) {
         setError(err.message || "Error al cargar usuarios");

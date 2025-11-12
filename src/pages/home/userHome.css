@@ -21,7 +21,6 @@
   margin-bottom: 40px;
 }
 
-/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .user-home h1 {
     font-size: 40px;

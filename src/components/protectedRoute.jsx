@@ -4,7 +4,7 @@ import { useAuth } from '../context/useAuth.js';
 
 export default function ProtectedRoute({ children }) {
   const { usuario, loading } = useAuth();
-  if (loading) return null; // o spinner
+  if (loading) return null;
   if (!usuario) return <Navigate to="/login" replace />;
   return children;
 }

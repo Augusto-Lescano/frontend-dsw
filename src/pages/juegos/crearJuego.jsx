@@ -16,7 +16,7 @@ function CrearJuego() {
   const [tiposDeJuego, setTiposDeJuego] = useState([]);
   const [plataformas, setPlataformas] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [loadingData, setLoadingData] = useState(true); // Para la carga inicial
+  const [loadingData, setLoadingData] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   

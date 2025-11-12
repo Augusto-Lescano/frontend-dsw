@@ -1,5 +1,3 @@
-/* ===== main.css ===== */
-
 .contenedor-body {
   display: flex;
   flex-direction: column;
@@ -19,7 +17,6 @@
   height: auto;
 }
 
-/* Home del usuario */
 .user-home {
   padding-top: 90px;
   text-align: center;
@@ -37,7 +34,7 @@
   line-height: 1.5;
 }
 
-/* Responsivo */
+/* Responsive */
 @media (max-width: 768px) {
   .body-logo {
     width: 40%;

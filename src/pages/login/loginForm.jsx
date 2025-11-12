@@ -41,7 +41,6 @@ const Login = () => {
   return (
     <div className="login-container">
 
-      {/* Logo arriba a la izquierda */}
       <img
         src={logo}
         alt="ClutchUp logo"
@@ -49,10 +48,8 @@ const Login = () => {
         onClick={() => navigate('/')}
       />
 
-      {/* Formulario */}
       <form className="form-login" onSubmit={handleLogin}>
         
-        {/* Logo dentro del formulario */}
         <img
           src={logo}
           alt="Logo ClutchUp"

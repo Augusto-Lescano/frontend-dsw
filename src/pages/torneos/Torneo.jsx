@@ -209,7 +209,7 @@ function Torneos() {
 
               {estadosInscripcion[t.id] && (
                 <div className="inscripcion-confirmada">
-                  ✅ Ya estás inscrito en este torneo
+                  Ya estás inscrito en este torneo
                 </div>
               )}
             </div>
@@ -245,7 +245,7 @@ function Torneos() {
           </div>
         ))}
         
-        {/* ✅ Tarjeta para Agregar Torneo (solo admin) */}
+        {/* Tarjeta para Agregar Torneo (solo admin) */}
         {usuario?.rol === 'admin' && (
           <div className="tarjeta-agregar" onClick={handleCrearTorneo}>
             <button className="btnAgregarTarjeta">

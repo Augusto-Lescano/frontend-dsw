@@ -53,7 +53,7 @@ export async function eliminarJuego(id) {
 }
 
 
-// UPDATE - PUT (maneja tanto actualizaciones completas como parciales)
+// Maneja la actualización completa de un juego y tambien parcial
 export async function actualizarJuegoCompleto(id, juego) {
   try {
     console.log('Enviando actualización:', { id, juego });

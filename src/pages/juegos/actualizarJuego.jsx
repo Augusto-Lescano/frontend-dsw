@@ -96,7 +96,7 @@ function ActualizarJuego() {
     try {
       console.log('Iniciando actualización...');
       
-      // Siempre usar PUT - el sanitize del backend maneja los campos undefined
+      // El sanitize del backend maneja los campos undefined
       await actualizarJuegoCompleto(id, juego);
       
       setSuccess("Juego actualizado correctamente");

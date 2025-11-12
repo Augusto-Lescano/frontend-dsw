@@ -43,7 +43,7 @@ const Register = () => {
     const { nombre, apellido, pais, usuario, email, password, confirmar } = formData;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 🔎 Validaciones
+    // Validaciones
     if (!nombre || !apellido || !pais || !usuario || !email || !password || !confirmar) {
       setError('Por favor, complete todos los campos.');
       return;
@@ -98,7 +98,7 @@ const Register = () => {
 
     await registerReq(payload);
 
-    setExito('Registro exitoso ✅');
+    setExito('Registro exitoso');
     setTimeout(() => navigate('/login'), 1500);
   } catch (err) {
     setError(err.message || 'Error al registrar usuario');
@@ -107,7 +107,6 @@ const Register = () => {
 
   return (
     <div className="login-container">
-      {/* Logo arriba a la izquierda */}
       <img
         src="../src/assets/images/logoPaginaPNG.png"
         alt="ClutchUp logo"

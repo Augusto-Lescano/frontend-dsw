@@ -148,7 +148,6 @@
   transform: none;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .contenedor-actualizar-torneo {
     padding: 80px 15px 20px;

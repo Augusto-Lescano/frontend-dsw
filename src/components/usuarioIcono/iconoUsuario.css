@@ -1,16 +1,12 @@
-/* ===== usuarioIcono.css ===== */
-
-/* Contenedor principal */
 .user-menu-container {
   position: relative;
   display: inline-block;
 }
 
-/* Ícono de usuario */
 .user-icon {
   cursor: pointer;
   font-size: 26px;
-  background-color: #2E644B; /* verde principal */
+  background-color: #2E644B;
   color: #fff;
   border-radius: 50%;
   padding: 8px 10px;
@@ -22,12 +18,11 @@
   transform: scale(1.05);
 }
 
-/* === Dropdown del usuario (modo oscuro) === */
 .user-dropdown {
   position: absolute;
   top: 50px;
   right: 0;
-  background: #2a2a2a; /* gris oscuro */
+  background: #2a2a2a;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -41,18 +36,16 @@
   transition: all 0.25s ease;
 }
 
-/* Estado visible */
 .user-dropdown.active {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-/* === Botones del menú === */
 .user-dropdown button {
-  background: #2a2a2a; /* mismo tono del fondo */
+  background: #2a2a2a; 
   border: none;
-  width: 100%; /* ocupa todo el ancho */
+  width: 100%; 
   padding: 14px 18px;
   text-align: left;
   cursor: pointer;
@@ -66,19 +59,17 @@
 }
 
 .user-dropdown button:hover {
-  background: #383838; /* gris un poco más claro */
-  color: #CA4D25; /* color acento */
+  background: #383838;
+  color: #CA4D25; 
   padding-left: 22px;
 }
 
-/* === Separador === */
 .user-dropdown hr {
   border: none;
   border-top: 1px solid #3d3d3d;
   margin: 0;
 }
 
-/* ===== Responsivo ===== */
 @media (max-width: 768px) {
   .user-icon {
     font-size: 24px;

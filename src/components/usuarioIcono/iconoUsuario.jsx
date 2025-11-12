@@ -49,7 +49,7 @@ export default function IconoUsuario() {
         👤
       </div>
 
-      {/* Menú desplegable animado */}
+      {/* Menú desplegable */}
       <div className={`user-dropdown ${menuAbierto ? 'active' : ''}`}>
         <button onClick={handlePerfil}>Actualizar perfil</button>
         <hr />

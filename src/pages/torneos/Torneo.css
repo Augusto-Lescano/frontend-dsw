@@ -1,4 +1,3 @@
-/* Torneo.css */
 .contenedor-torneos {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,7 +14,6 @@
   font-size: 2.5rem;
 }
 
-/* ==== Mensaje de error ==== */
 .error {
   background-color: #ffebee;
   color: #c62828;
@@ -34,7 +32,6 @@
   width: 100%;
 }
 
-/* ==== Tarjetas - 2 POR FILA ==== */
 .tarjeta-torneo {
   background: white;
   border-radius: 12px;
@@ -44,13 +41,12 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  flex: 0 0 calc(50% - 20px); /* 2 tarjetas por fila */
+  flex: 0 0 calc(50% - 20px);
   width: calc(50% - 20px);
   height: auto;
   box-sizing: border-box;
 }
 
-/* ==== Tarjeta especial para el botón Agregar ==== */
 .tarjeta-agregar {
   background: white;
   border-radius: 12px;
@@ -86,7 +82,7 @@
   }
 }
 
-/* Para pantallas pequeñas: 1 tarjeta por fila */
+/* Para pantallas mas chicas: 1 tarjeta por fila */
 @media (max-width: 768px) {
   .tarjeta-torneo,
   .tarjeta-agregar {
@@ -122,7 +118,6 @@
   justify-content: flex-start;
 }
 
-/* Botón Inscribirse - VERDE */
 .btnInscribir {
   width: 100%;
   padding: 12px 20px;
@@ -152,7 +147,6 @@
   cursor: not-allowed;
 }
 
-/* Botón Actualizar - NARANJA */
 .btnActualizar {
   width: 100%;
   padding: 12px 20px;
@@ -171,7 +165,6 @@
   transform: translateY(-2px);
 }
 
-/* Botón Eliminar - ROJO */
 .btnEliminar {
   width: 100%;
   padding: 12px 20px;
@@ -190,7 +183,6 @@
   transform: translateY(-2px);
 }
 
-/* Botones dentro de las tarjetas */
 .botones-tarjeta {
   margin-top: auto;
   display: flex;
@@ -199,7 +191,6 @@
   padding-top: 15px;
 }
 
-/* Botón Agregar como tarjeta */
 .btnAgregarTarjeta {
   background: transparent;
   border: none;
@@ -232,7 +223,6 @@
   font-size: 1.2rem;
 }
 
-/* Indicador de inscripción confirmada */
 .inscripcion-confirmada {
   background-color: #e8f5e8;
   color: #2e7d32;
@@ -244,7 +234,6 @@
   border: 1px solid #4caf50;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .contenedor-torneos {
     padding: 20px 15px;

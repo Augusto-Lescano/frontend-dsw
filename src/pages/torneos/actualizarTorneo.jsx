@@ -78,7 +78,7 @@ useEffect(() => {
         resultado: torneoData.resultado || '',
         region: torneoData.region || '',
         estado: torneoData.estado || '',
-        tipoDeTorneo: torneoData.tipoDeTorneo || '', // ✅ guarda objeto completo
+        tipoDeTorneo: torneoData.tipoDeTorneo || '',
         juego: torneoData.juego?.id || '',
         creador: torneoData.creador?.id || '',
         plataforma: torneoData.plataforma?.id || '',
@@ -89,7 +89,7 @@ useEffect(() => {
       setTipoTorneos(tipoTorneosData || []);
 
     } catch (err) {
-      console.error('❌ Error cargando datos:', err);
+      console.error('Error cargando datos:', err);
       setError(`Error al cargar los datos: ${err.message}`);
     } finally {
       setLoading(false);
@@ -108,7 +108,6 @@ useEffect(() => {
         }));
     };
 
-    // -------------------- handleSubmit actualizado --------------------
 const handleSubmit = async (e) => {
   e.preventDefault();
   setError("");
@@ -116,10 +115,9 @@ const handleSubmit = async (e) => {
   setSubmitting(true);
 
   try {
-    console.log('🔄 Iniciando actualización de torneo...');
     const torneoId = parseInt(id);
 
-    // ✅ Preparar datos para enviar (solo IDs donde corresponde)
+    // Preparar datos para enviar (solo IDs donde corresponde)
     const torneoParaEnviar = {
       ...torneo,
       tipoDeTorneo: torneo.tipoDeTorneo.id,
@@ -130,14 +128,14 @@ const handleSubmit = async (e) => {
 
     await actualizarTorneo(torneoId, torneoParaEnviar);
 
-    setSuccess("✅ Torneo actualizado correctamente");
+    setSuccess("Torneo actualizado correctamente");
 
     setTimeout(() => {
       navigate('/torneos');
     }, 2000);
 
   } catch (err) {
-    console.error('💥 Error actualizando torneo:', err);
+    console.error('Error actualizando torneo:', err);
 
     let mensajeError = 'Error al actualizar el torneo';
     if (err.response?.data?.message) {
@@ -146,7 +144,7 @@ const handleSubmit = async (e) => {
       mensajeError = err.message;
     }
 
-    setError(`❌ ${mensajeError}`);
+    setError(`${mensajeError}`);
   } finally {
     setSubmitting(false);
   }
@@ -213,38 +211,37 @@ return (
                 />
             </div>
 
-            {/* CORREGIDO: Envuelve los elementos en un fragmento */}
             {torneo.tipoDeTorneo && !torneo.tipoDeTorneo.esIndividual && (
             <>
-    <div className="form-group">
-      <label htmlFor="cantJugadoresEquipo">Jugadores por Equipo:</label>
-      <input
-        type="number"
-        id="cantJugadoresEquipo"
-        name="cantJugadoresEquipo"
-        value={torneo.cantJugadoresEquipo}
-        onChange={handleChange}
-        required
-        className="form-input"
-        min="1"
-      />
-    </div>
+                <div className="form-group">
+                <label htmlFor="cantJugadoresEquipo">Jugadores por Equipo:</label>
+                <input
+                    type="number"
+                    id="cantJugadoresEquipo"
+                    name="cantJugadoresEquipo"
+                    value={torneo.cantJugadoresEquipo}
+                    onChange={handleChange}
+                    required
+                    className="form-input"
+                    min="1"
+                />
+                </div>
 
-    <div className="form-group">
-      <label htmlFor="cantEquipos">Cantidad de Equipos:</label>
-      <input
-        type="number"
-        id="cantEquipos"
-        name="cantEquipos"
-        value={torneo.cantEquipos}
-        onChange={handleChange}
-        required
-        className="form-input"
-        min="1"
-      />
-    </div>
-  </>
-)}
+                <div className="form-group">
+                <label htmlFor="cantEquipos">Cantidad de Equipos:</label>
+                <input
+                    type="number"
+                    id="cantEquipos"
+                    name="cantEquipos"
+                    value={torneo.cantEquipos}
+                    onChange={handleChange}
+                    required
+                    className="form-input"
+                    min="1"
+                />
+                </div>
+            </>
+            )}
 
             <div className="form-row">
                 <div className="form-group">

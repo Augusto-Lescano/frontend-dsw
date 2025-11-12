@@ -20,7 +20,7 @@ export async function obtenerUnaPlataforma(id) {
     const res = await apiPlataformas.get(`/${id}`);
     return res.data.data;
   } catch (error) {
-    console.error(`❌ Error obteniendo plataforma ${id}:`, error);
+    console.error(`Error obteniendo plataforma ${id}:`, error);
     throw error;
   }
 }
@@ -32,7 +32,7 @@ export async function crearPlataforma(plataforma) {
     });
     return res.data.data;
   } catch (error) {
-    console.error('❌ Error creando plataforma:', error);
+    console.error('Error creando plataforma:', error);
     throw error;
   }
 }
@@ -42,7 +42,7 @@ export async function eliminarPlataforma(id) {
     await apiPlataformas.delete(`/${id}`);
     return true;
   } catch (error) {
-    console.error(`❌ Error eliminando plataforma ${id}:`, error);
+    console.error(`Error eliminando plataforma ${id}:`, error);
     throw error;
   }
 }

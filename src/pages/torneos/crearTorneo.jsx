@@ -8,7 +8,7 @@ import { obtenerPlataformas } from '../../services/plataformaService.js';
 import { obtenerTipoTorneos } from '../../services/tipoTorneoService.js';
 
 function CrearTorneo() {
-  const { usuario } = useAuth(); // Obtener usuario autenticado (admin)
+  const { usuario } = useAuth();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ function CrearTorneo() {
     estado: 'pendiente',
     tipoDeTorneo: '',
     juego: '',
-    creador: usuario?.id || '', // Inicializar con el ID del usuario (admin)
+    creador: usuario?.id || '',
     plataforma: '',
   });
 
@@ -37,7 +37,7 @@ function CrearTorneo() {
   const [juegos, setJuegos] = useState([]);
   const [plataformas, setPlataformas] = useState([]);
   const [tipoTorneos, setTipoTorneos] = useState([]);
-  // Estado para controlar visibilidad
+  
   const [tipoTorneoSeleccionado, setTipoTorneoSeleccionado] = useState(false);
 
   // Efecto para actualizar el creador cuando el usuario esté disponible
@@ -50,8 +50,6 @@ function CrearTorneo() {
     }
   }, [usuario]);
 
-
-  // Traer datos al montar el componente
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -161,7 +159,7 @@ function CrearTorneo() {
     }
 
     try {
-      // Preparar datos para enviar (convertir IDs a números si es necesario)
+      // Preparar datos para enviar
       const datosEnviar = {
         // Campos de texto y fechas (se mantienen igual)
         nombre: formData.nombre,
@@ -302,7 +300,6 @@ function CrearTorneo() {
           </select>
         </div>
 
-        {/* Campos numéricos - CONDICIONALES */}
         <div className="form-row">
           {/* Mostrar campos de equipos solo si NO es individual */}
           {mostrarCamposEquipos && (
@@ -363,7 +360,6 @@ function CrearTorneo() {
           </div>
         </div>
 
-        {/* Resto del formulario (fechas, región, etc.) - se mantiene igual */}
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="fechaInicioIns">Inicio de Inscripción:</label>

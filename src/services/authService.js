@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Configuración base del cliente Axios
 const api = axios.create({
   baseURL: 'http://localhost:3000/api',
   withCredentials: true, // Envía cookies httpOnly automáticamente
@@ -9,7 +8,6 @@ const api = axios.create({
   },
 });
 
-// Interceptores
 // Interceptor para manejar errores globales (401, 403, etc.)
 api.interceptors.response.use(
   (response) => response,
@@ -17,8 +15,7 @@ api.interceptors.response.use(
     // Si el token expiró o no autorizado
     if (error.response?.status === 401) {
       console.warn('Token expirado o usuario no autenticado');
-      // Aquí podríaamos intentar refrescar el token automáticamente:
-      // await refreshAccessToken();
+      // Aca podemos agregar refresh token en el futuro
     }
 
     // Propagamos el error con un mensaje claro
@@ -32,7 +29,6 @@ api.interceptors.response.use(
 );
 
 // Funciones de autenticación
-
 export const loginReq = async (identifier, contrasenia) => {
   try {
     const res = await api.post('/usuarios/login', { identifier, contrasenia });
@@ -73,7 +69,7 @@ export const meReq = async () => {
 
 export const obtenerUsuariosSinEquipo = async () => {
   try {
-    const res = await api.get('/usuarios/sin-equipo'); // backend debe exponer esta ruta
+    const res = await api.get('/usuarios/sin-equipo');
     return res.data.data;
   } catch (err) {
     console.error('Error obteniendo usuarios sin equipo:', err);

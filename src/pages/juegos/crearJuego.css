@@ -190,7 +190,6 @@
   color: #666;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .contenedor-crear-juego {
     padding: 80px 15px 20px;

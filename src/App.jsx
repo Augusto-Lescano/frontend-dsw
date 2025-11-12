@@ -7,7 +7,7 @@ export default function App() {
     <div className="contenedor-app">
       <Navbar />
       <div className="contenedor-body">
-        {/* Aquí se cargan las páginas hijas según la ruta */}
+        {/* Aca se cargan las páginas hijas según la ruta */}
         <Outlet />
       </div>
     </div>

@@ -20,6 +20,7 @@ import CrearJuego from './pages/juegos/crearJuego.jsx';
 import ActualizarJuego from './pages/juegos/actualizarJuego.jsx';
 import InscripcionesAdmin from './pages/inscripciones/inscripcionesAdmin.jsx';
 import UsuariosAdmin from './pages/usuariosAdmin/usuariosAdmin.jsx';
+import ActualizarPerfil from './components/usuarioIcono/actualizarPerfil.jsx';
 import './styles/main.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -44,6 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="inscripciones" element={<InscripcionesAdmin />} />
             <Route path="admin/usuarios" element={<UsuariosAdmin />} />
             <Route path="FAQs" element={<Faqs />} />
+            <Route path="perfil" element={<ActualizarPerfil />} />
           </Route>
 
           {/* Pantallas fuera del layout */}

@@ -1,3 +1,4 @@
+/* ==== CONTENEDOR ==== */
 .contenedor-equipos {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,7 +15,7 @@
   font-size: 2.5rem;
 }
 
-/* ==== Mensaje de error ==== */
+/* ==== MENSAJE DE ERROR ==== */
 .error {
   background-color: #ffebee;
   color: #c62828;
@@ -24,16 +25,18 @@
   text-align: center;
 }
 
+/* ==== LISTA ==== */
 .lista-equipos {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
   align-items: stretch;
   width: 100%;
+  flex-direction: row;
 }
 
-/* ==== Tarjetas - 2 POR FILA ==== */
+/* ==== TARJETAS ==== */
 .tarjeta-equipo {
   background: white;
   border-radius: 12px;
@@ -43,26 +46,9 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  flex: 0 0 calc(50% - 20px); /* 2 tarjetas por fila */
-  width: calc(50% - 20px);
-  height: auto;
+  flex: 0 0 calc(33.333% - 20px); /* 3 tarjetas por fila */
+  max-width: calc(33.333% - 20px);
   box-sizing: border-box;
-}
-
-/* Para pantallas medianas: 2 tarjetas por fila (se mantiene igual) */
-@media (max-width: 1024px) {
-  .tarjeta-equipo {
-    flex: 0 0 calc(50% - 20px);
-    width: calc(50% - 20px);
-  }
-}
-
-/* Para pantallas pequeñas: 1 tarjeta por fila */
-@media (max-width: 768px) {
-  .tarjeta-equipo {
-    flex: 0 0 100%;
-    width: 100%;
-  }
 }
 
 .tarjeta-equipo:hover {
@@ -70,6 +56,33 @@
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* ==== TARJETA AGREGAR ==== */
+.tarjeta-equipo-agregar {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #CA4D25;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #fffaf8;
+}
+
+.tarjeta-equipo-agregar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(202, 77, 37, 0.2);
+  border-color: #b34421;
+  background-color: #fff5f0;
+}
+
+/* ==== CONTENIDO ==== */
 .tarjeta-equipo h3 {
   color: #2c3e50;
   margin-bottom: 15px;
@@ -92,36 +105,37 @@
   justify-content: flex-start;
 }
 
-/* ==== Lista de miembros ==== */
+/* ==== LISTA DE MIEMBROS ==== */
 .miembros-lista {
   margin-top: 15px;
-  padding: 10px;
-  background-color: #f4f4f4;
+  padding: 15px;
+  background-color: #f8f9fa;
   border-radius: 8px;
-  color: #333;
-  text-align: left;
+  border-left: 4px solid #2E644B;
 }
 
 .miembros-lista h4 {
   color: #CA4D25;
   margin-bottom: 10px;
+  font-size: 1.1rem;
 }
 
 .miembros-lista ul {
-  list-style-type: disc;
-  padding-left: 20px;
+  list-style-type: none;
+  padding-left: 0;
 }
 
-/* ==== Botones dentro de las tarjetas ==== */
-.botones-tarjeta {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 15px;
+.miembros-lista li {
+  padding: 8px;
+  margin-bottom: 5px;
+  background: white;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border-left: 3px solid #2E644B;
 }
 
-.btnInscribir {
+/* ==== BOTONES ==== */
+.btnVerMiembros {
   width: 100%;
   padding: 12px 20px;
   background: #2E644B;
@@ -134,19 +148,12 @@
   transition: all 0.3s ease;
 }
 
-.btnInscribir:hover:not(:disabled) {
+.btnVerMiembros:hover:not(:disabled) {
   background: #25553f;
   transform: translateY(-2px);
 }
 
-.btnInscribir:disabled {
-  background: #cccccc;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* ==== Botones CRUD ==== */
-.btnCrud {
+.btnActualizar {
   width: 100%;
   padding: 12px 20px;
   background: #CA4D25;
@@ -159,7 +166,7 @@
   transition: all 0.3s ease;
 }
 
-.btnCrud:hover {
+.btnActualizar:hover {
   background: #b34421;
   transform: translateY(-2px);
 }
@@ -182,19 +189,60 @@
   transform: translateY(-2px);
 }
 
-/* ==== Botón agregar (al final) ==== */
-.contenedor-botones {
-  margin-top: 40px;
+.botones-tarjeta {
+  margin-top: auto;
   display: flex;
-  justify-content: center;
-  position: sticky;
-  bottom: 20px;
-  background: transparent;
-  z-index: 5;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 15px;
 }
 
-.contenedor-botones .btnCrud {
-  width: auto;
-  padding: 12px 30px;
+/* ==== BOTÓN AGREGAR ==== */
+.btnAgregarTarjeta {
+  background: transparent;
+  border: none;
+  color: #CA4D25;
   font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+}
+
+.btnAgregarTarjeta:hover {
+  color: #b34421;
+  transform: scale(1.05);
+}
+
+.icono-agregar {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.texto-agregar {
+  font-size: 1.2rem;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 1024px) {
+  .tarjeta-equipo,
+  .tarjeta-equipo-agregar {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .tarjeta-equipo,
+  .tarjeta-equipo-agregar {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }

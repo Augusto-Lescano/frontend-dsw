@@ -45,80 +45,81 @@ export default function Equipos() {
   };
 
   return (
-    <div className="contenedor-equipos">
-      {error && <p className="error">{error}</p>}
+  <div className="contenedor-equipos">
+    <h1>Lista de Equipos</h1>
+    {error && <p className="error">{error}</p>}
 
-      {/* Tarjetas de equipos */}
-      <div className="lista-equipos">
-        {equipos.length > 0 ? (
-          equipos.map((e) => (
-            <div key={e.id} className="tarjeta-equipo">
-              <div className="contenido-tarjeta">
-                <h3>{e.nombre}</h3>
-                <p><strong>Capitán:</strong> {e.capitan?.nombre || 'Sin capitán'}</p>
-                <p><strong>Miembros:</strong> {e.miembros?.length || 0}</p>
-                <p><strong>Descripción:</strong> {e.descripcion || 'Sin descripción'}</p>
+    <div className="lista-equipos">
+      {equipos.length > 0 ? (
+        equipos.map((e) => (
+          <div key={e.id} className="tarjeta-equipo">
+            <div className="contenido-tarjeta">
+              <h3>{e.nombre}</h3>
+              <p><strong>Capitán:</strong> {e.capitan?.nombre || 'Sin capitán'}</p>
+              <p><strong>Miembros:</strong> {e.jugadores?.length + 1 || 1}</p>
+              <p><strong>Descripción:</strong> {e.descripcion || 'Sin descripción'}</p>
 
-                {equipoSeleccionado?.id === e.id && (
-                  <div className="miembros-lista">
-                    <h4>Miembros del equipo:</h4>
-                    {e.miembros && e.miembros.length > 0 ? (
-                      <ul>
-                        {e.miembros.map((m) => (
-                          <li key={m.id}>{m.nombre}</li>
-                        ))}
-                      </ul>
+              {equipoSeleccionado?.id === e.id && (
+                <div className="miembros-lista">
+                  <h4>Miembros del equipo:</h4>
+                  <ul>
+                    <li>👑 {e.capitan?.nombre} (Capitán)</li>
+                    {e.jugadores && e.jugadores.length > 0 ? (
+                      e.jugadores.map((jugador) => (
+                        <li key={jugador.id}>👤 {jugador.nombre}</li>
+                      ))
                     ) : (
-                      <p>No hay miembros en este equipo.</p>
+                      <li>No hay otros miembros en el equipo</li>
                     )}
-                  </div>
-                )}
-              </div>
-
-              {/* Botones al final de la tarjeta */}
-              <div className="botones-tarjeta">
-                <button
-                  className="btnInscribir"
-                  onClick={() => handleMostrarMiembros(e)}
-                >
-                  {equipoSeleccionado?.id === e.id
-                    ? 'Ocultar miembros'
-                    : 'Ver miembros'}
-                </button>
-
-                {usuario?.id === e.capitan?.id && (
-                  <>
-                    <button
-                      className="btnCrud"
-                      onClick={() => handleActualizarEquipo(e.id)}
-                    >
-                      Actualizar
-                    </button>
-                    <button
-                      className="btnCrud"
-                      style={{ background: '#89211c' }}
-                      onClick={() => handleEliminarEquipo(e.id)}
-                    >
-                      Eliminar
-                    </button>
-                  </>
-                )}
-              </div>
+                  </ul>
+                </div>
+              )}
             </div>
-          ))
-        ) : (
-          <p>No hay equipos disponibles.</p>
-        )}
-      </div>
 
-      {/* Botón Agregar igual que en torneos */}
+            <div className="botones-tarjeta">
+              <button
+                className="btnVerMiembros"
+                onClick={() => handleMostrarMiembros(e)}
+              >
+                {equipoSeleccionado?.id === e.id
+                  ? 'Ocultar miembros'
+                  : 'Ver miembros'}
+              </button>
+
+              {usuario?.id === e.capitan?.id && (
+                <>
+                  <button
+                    className="btnActualizar"
+                    onClick={() => handleActualizarEquipo(e.id)}
+                  >
+                    Actualizar
+                  </button>
+                  <button
+                    className="btnEliminar"
+                    onClick={() => handleEliminarEquipo(e.id)}
+                  >
+                    Eliminar
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No hay equipos disponibles.</p>
+      )}
+
+      {/* ✅ Tarjeta para Agregar Equipo */}
       {usuario && (
-        <div className="contenedor-botones">
-          <button className="btnCrud" onClick={handleCrearEquipo}>
-            Agregar
+        <div className="tarjeta-equipo-agregar" onClick={handleCrearEquipo}>
+          <button className="btnAgregarTarjeta">
+            <span className="icono-agregar">+</span>
+            <span className="texto-agregar">Agregar Equipo</span>
           </button>
         </div>
       )}
     </div>
-  );
+  </div>
+);
+
 }

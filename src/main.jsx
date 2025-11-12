@@ -19,6 +19,7 @@ import Juegos from './pages/juegos/Juegos.jsx';
 import CrearJuego from './pages/juegos/crearJuego.jsx';
 import ActualizarJuego from './pages/juegos/actualizarJuego.jsx';
 import InscripcionesAdmin from './pages/inscripciones/inscripcionesAdmin.jsx';
+import UsuariosAdmin from './pages/usuariosAdmin/usuariosAdmin.jsx';
 import './styles/main.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -34,14 +35,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="torneos" element={<Torneos />} />
             <Route path="torneos/crear" element={<CrearTorneo />} />
             <Route path="torneos/actualizar/:id" element={<ActualizarTorneo />} />
-            <Route path="/equipos" element={<Equipos />} />
-            <Route path="/equipos/crear" element={<CrearEquipo />} />
-            <Route path="/equipos/actualizar/:id" element={<ActualizarEquipo />} />
-            <Route path="juegos" element={<Juegos/>} />
-            <Route path="/juegos/crear" element={<CrearJuego />} />
-            <Route path="juegos/actualizar/:id" element={<ActualizarJuego/>} />
-            <Route path="/inscripciones" element={<InscripcionesAdmin />} />
-            <Route path="/FAQs" element={<Faqs />} />
+            <Route path="equipos" element={<Equipos />} />
+            <Route path="equipos/crear" element={<CrearEquipo />} />
+            <Route path="equipos/actualizar/:id" element={<ActualizarEquipo />} />
+            <Route path="juegos" element={<Juegos />} />
+            <Route path="juegos/crear" element={<CrearJuego />} />
+            <Route path="juegos/actualizar/:id" element={<ActualizarJuego />} />
+            <Route path="inscripciones" element={<InscripcionesAdmin />} />
+            <Route path="admin/usuarios" element={<UsuariosAdmin />} />
+            <Route path="FAQs" element={<Faqs />} />
           </Route>
 
           {/* Pantallas fuera del layout */}

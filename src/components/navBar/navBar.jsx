@@ -36,7 +36,7 @@ export default function Navbar() {
               <li><Link to="/juegos">JUEGOS</Link></li>
               <li><Link to="/inscripciones">INSCRIPCIONES</Link></li>
               <li><Link to="/equipos">EQUIPOS</Link></li>
-              <li><Link to="/usuarios">USUARIOS</Link></li>
+              <li><Link to="/admin/usuarios">USUARIOS</Link></li>
             </>
           )}
 

@@ -81,6 +81,27 @@ export const obtenerUsuariosSinEquipo = async () => {
   }
 };
 
+export const obtenerUsuariosAdmin = async () => {
+  try {
+    const res = await api.get('/usuarios/admin/listado');
+    return res.data.data;
+  } catch (error) {
+    console.error('Error obteniendo listado de usuarios (admin):', error);
+    throw error;
+  }
+};
+
+// Eliminar usuario (solo admin)
+export async function eliminarUsuario(id) {
+  try {
+    const res = await api.delete(`/usuarios/admin/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error('Error eliminando usuario:', error);
+    throw error;
+  }
+}
+
 // A FUTURO
 // Implementar refresh tokens.
 

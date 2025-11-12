@@ -8,7 +8,7 @@ import './crearEquipo.css';
 export default function CrearEquipo() {
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [miembros, setMiembros] = useState([]);
+  const [jugadores, setJugadores] = useState([]);
   const [usuariosDisponibles, setUsuariosDisponibles] = useState([]);
   const [error, setError] = useState('');
 
@@ -28,7 +28,7 @@ export default function CrearEquipo() {
   }, []);
 
   const handleSeleccionarMiembro = (id) => {
-    setMiembros((prev) =>
+    setJugadores((prev) =>
       prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id]
     );
   };
@@ -40,7 +40,7 @@ export default function CrearEquipo() {
         nombre,
         capitan: usuario.id,
         descripcion,
-        miembros,
+        jugadores,
       });
       navigate('/equipos');
     } catch (err) {
@@ -77,7 +77,7 @@ export default function CrearEquipo() {
               <label key={u.id} className="miembro-item">
                 <input
                   type="checkbox"
-                  checked={miembros.includes(u.id)}
+                  checked={jugadores.includes(u.id)}
                   onChange={() => handleSeleccionarMiembro(u.id)}
                 />
                 {u.nombre}

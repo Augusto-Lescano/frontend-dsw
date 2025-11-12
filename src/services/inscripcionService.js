@@ -54,3 +54,14 @@ export async function verificarInscripcion(torneoId, usuarioId) {
     throw error;
   }
 }
+
+// Obtener todas las inscripciones (solo admin)
+export async function obtenerTodasLasInscripciones() {
+  try {
+    const res = await api.get('/');
+    return res.data.data;
+  } catch (error) {
+    console.error('Error obteniendo inscripciones:', error);
+    throw error;
+  }
+}

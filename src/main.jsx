@@ -18,6 +18,7 @@ import Faqs from './pages/FAQs/FAQs.jsx';
 import Juegos from './pages/juegos/Juegos.jsx';
 import CrearJuego from './pages/juegos/crearJuego.jsx';
 import ActualizarJuego from './pages/juegos/actualizarJuego.jsx';
+import InscripcionesAdmin from './pages/inscripciones/inscripcionesAdmin.jsx';
 import './styles/main.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="juegos" element={<Juegos/>} />
             <Route path="/juegos/crear" element={<CrearJuego />} />
             <Route path="juegos/actualizar/:id" element={<ActualizarJuego/>} />
+            <Route path="/inscripciones" element={<InscripcionesAdmin />} />
             <Route path="/FAQs" element={<Faqs />} />
           </Route>
 

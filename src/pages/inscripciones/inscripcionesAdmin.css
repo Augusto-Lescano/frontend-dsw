@@ -1,0 +1,64 @@
+.contenedor-inscripciones-admin {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  font-family: 'Arial', sans-serif;
+}
+
+.contenedor-inscripciones-admin h1 {
+  text-align: center;
+  color: #CA4D25;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.lista-inscripciones {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.tarjeta-inscripcion {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.tarjeta-inscripcion h2 {
+  color: #2E644B;
+  margin-bottom: 10px;
+}
+
+.seccion-inscripciones {
+  margin-top: 15px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.seccion-inscripciones h4 {
+  color: #CA4D25;
+  margin-bottom: 10px;
+}
+
+.seccion-inscripciones ul {
+  list-style: none;
+  padding: 0;
+}
+
+.seccion-inscripciones li {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #f44336;
+}

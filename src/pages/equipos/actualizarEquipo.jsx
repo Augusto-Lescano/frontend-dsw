@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { obtenerUnEquipo, actualizarEquipo } from '../../services/equipoService.js';
 import { obtenerUsuariosSinEquipo } from '../../services/authService.js';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../../context/useAuth.js';
 import './actualizarEquipo.css';
 
 export default function ActualizarEquipo() {
@@ -13,24 +14,25 @@ export default function ActualizarEquipo() {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
+  const { usuario } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const equipo = await obtenerUnEquipo(id);
         const disponibles = await obtenerUsuariosSinEquipo();
-
+        const filtrados = disponibles.filter(u => u.id !== usuario.id);
         setNombre(equipo.nombre || '');
         setDescripcion(equipo.descripcion || ''); // <-- inicializar descripcion
         // backend devuelve "jugadores"
         setMiembros(equipo.jugadores?.map((j) => j.id) || []);
-        setUsuariosDisponibles(disponibles);
+        setUsuariosDisponibles(filtrados);
       } catch (err) {
         setError(err.message);
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, usuario]);
 
   const handleSeleccionarMiembro = (userId) => {
     setMiembros((prev) =>

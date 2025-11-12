@@ -19,13 +19,14 @@ export default function CrearEquipo() {
     const fetchUsuarios = async () => {
       try {
         const res = await obtenerUsuariosSinEquipo();
-        setUsuariosDisponibles(res);
+        const filtrados = res.filter(u => u.id !== usuario.id);
+        setUsuariosDisponibles(filtrados);
       } catch (err) {
         setError(err.message);
       }
     };
     fetchUsuarios();
-  }, []);
+  }, [usuario.id]);
 
   const handleSeleccionarMiembro = (id) => {
     setJugadores((prev) =>

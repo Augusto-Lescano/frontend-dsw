@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { obtenerUnEquipo, actualizarEquipo } from '../../services/equipoService.js';
 import { obtenerUsuariosSinEquipo } from '../../services/authService.js';
 import { useNavigate, useParams } from 'react-router-dom';
-import './Equipo.css';
+import './actualizarEquipo.css';
 
 export default function ActualizarEquipo() {
   const { id } = useParams();
   const [nombre, setNombre] = useState('');
+  const [descripcion, setDescripcion] = useState(''); // <-- campo descripcion
   const [miembros, setMiembros] = useState([]);
   const [usuariosDisponibles, setUsuariosDisponibles] = useState([]);
   const [error, setError] = useState('');
@@ -18,8 +19,11 @@ export default function ActualizarEquipo() {
       try {
         const equipo = await obtenerUnEquipo(id);
         const disponibles = await obtenerUsuariosSinEquipo();
-        setNombre(equipo.nombre);
-        setMiembros(equipo.miembros.map((m) => m.id));
+
+        setNombre(equipo.nombre || '');
+        setDescripcion(equipo.descripcion || ''); // <-- inicializar descripcion
+        // backend devuelve "jugadores"
+        setMiembros(equipo.jugadores?.map((j) => j.id) || []);
         setUsuariosDisponibles(disponibles);
       } catch (err) {
         setError(err.message);
@@ -39,7 +43,8 @@ export default function ActualizarEquipo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await actualizarEquipo(id, { nombre, miembros });
+      // enviamos "jugadores" porque así lo espera el backend
+      await actualizarEquipo(id, { nombre, descripcion, jugadores: miembros });
       navigate('/equipos');
     } catch (err) {
       setError(err.message);
@@ -58,6 +63,14 @@ export default function ActualizarEquipo() {
           onChange={(e) => setNombre(e.target.value)}
           placeholder="Nombre del equipo"
           required
+        />
+
+        {/* campo descripcion */}
+        <textarea
+          value={descripcion}
+          onChange={(e) => setDescripcion(e.target.value)}
+          placeholder="Descripción del equipo (opcional)"
+          rows={4}
         />
 
         <h3>Actualizar miembros</h3>

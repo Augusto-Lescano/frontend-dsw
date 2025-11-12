@@ -1,1 +1,161 @@
-/*falta*/
+/* ================================
+   CONTENEDOR GENERAL
+================================ */
+.contenedor-torneos {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 20px 20px;
+  font-family: 'Arial', sans-serif;
+  min-height: calc(100vh - 80px);
+}
+
+.contenedor-torneos h1 {
+  text-align: center;
+  color: #CA4D25;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+/* ================================
+   MENSAJES
+================================ */
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #f44336;
+}
+
+.success {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #4caf50;
+}
+
+.cargando {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* ================================
+   FORMULARIO
+================================ */
+.form-equipo {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-equipo input[type="text"],
+.form-equipo textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  font-family: 'Arial', sans-serif;
+}
+
+.form-equipo input:focus,
+.form-equipo textarea:focus {
+  outline: none;
+  border-color: #2E644B;
+}
+
+.form-equipo textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ================================
+   LISTA DE MIEMBROS
+================================ */
+.miembros-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.miembro-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.miembro-item:hover {
+  background: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+.miembro-item input[type="checkbox"] {
+  accent-color: #CA4D25;
+  width: 18px;
+  height: 18px;
+}
+
+/* ================================
+   BOTÓN
+================================ */
+.btnCrud {
+  padding: 15px 20px;
+  background: #CA4D25;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.btnCrud:hover:not(:disabled) {
+  background: #b34421;
+  transform: translateY(-2px);
+}
+
+.btnCrud:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .contenedor-torneos {
+    padding: 80px 15px 20px;
+  }
+
+  .form-equipo {
+    padding: 20px;
+  }
+
+  .miembros-lista {
+    grid-template-columns: 1fr;
+  }
+}
